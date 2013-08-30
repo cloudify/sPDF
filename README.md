@@ -1,6 +1,6 @@
 # sPDF #
 
-sPDF ( pronunced _speedy-f_ ) is a Scala library that makes it super easy to create complex PDFs from plain old HTML, CSS and Javascript. 
+sPDF ( pronounced _speedy-f_ ) is a Scala library that makes it super easy to create complex PDFs from plain old HTML, CSS and Javascript. 
 
 On the backend it uses [wkhtmltopdf](http://github.com/antialize/wkhtmltopdf) which renders HTML using Webkit.
 
