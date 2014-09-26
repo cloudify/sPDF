@@ -141,6 +141,10 @@ trait PdfConfig {
 
   val outlineDepth = Parameter[Int]("outline-depth")
 
+  val printMediaType = Parameter[Boolean]("print-media-type")
+
+  val noPrintMediaType = Parameter[Boolean]("no-print-media-type")
+
 }
 
 object PdfConfig {
@@ -219,7 +223,9 @@ object PdfConfig {
       tableOfContentLevel7Indentation.toParameter,
       tableOfContentNoDots.toParameter,
       title.toParameter,
-      zoom.toParameter
+      zoom.toParameter,
+      printMediaType.toParameter,
+      noPrintMediaType.toParameter
     ).flatten
   }
 

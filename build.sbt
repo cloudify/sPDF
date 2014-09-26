@@ -12,7 +12,7 @@ licenses := Seq(
 
 organization := "io.github.cloudify"
 
-version := "1.0.0"
+version := "1.1.0-SNAPSHOT"
 
 /* scala versions and options */
 scalaVersion := "2.10.2"
