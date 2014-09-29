@@ -43,9 +43,11 @@ trait Parameter[T] {
 case class NegatableParameter(name: String) extends Parameter[Boolean] {
   override def toParameter(implicit shower: ParamShow[Boolean]): Iterable[String] = value match {
     case Some(true) => shower.show(name, true)
-    case Some(false) => shower.show(s"no-$name", true)
+    case Some(false) => shower.show(negate(name), true)
     case _ => Iterable.empty
   }
+
+  private def negate(name: String): String = "no-" + name
 }
 
 object Parameter {
