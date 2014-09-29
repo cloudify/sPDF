@@ -36,8 +36,16 @@ trait Parameter[T] {
   /**
    * Provides the current value for the option
    */
-  private def value: Option[T] = underlying orElse default
+  protected def value: Option[T] = underlying orElse default
 
+}
+
+case class NegatableParameter(name: String) extends Parameter[Boolean] {
+  override def toParameter(implicit shower: ParamShow[Boolean]): Iterable[String] = value match {
+    case Some(true) => shower.show(name, true)
+    case Some(false) => shower.show(s"no-$name", true)
+    case _ => Iterable.empty
+  }
 }
 
 object Parameter {
