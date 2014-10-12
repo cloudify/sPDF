@@ -1,3 +1,5 @@
+releaseSettings
+
 name := "sPDF"
 
 description := "Create PDFs using plain old HTML+CSS. Uses wkhtmltopdf on the back-end which renders HTML using Webkit."
@@ -11,8 +13,6 @@ licenses := Seq(
 )
 
 organization := "io.github.cloudify"
-
-version := "1.1.0-SNAPSHOT"
 
 /* scala versions and options */
 scalaVersion := "2.10.2"
