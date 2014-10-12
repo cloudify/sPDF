@@ -24,14 +24,14 @@ class PdfConfigSpec extends WordSpec with ShouldMatchers {
 
     "print media type" in {
       val config = new PdfConfig {
-        printMediaType := true
+        printMediaType := Some(true)
       }
       PdfConfig.toParameters(config) should contain("--print-media-type")
     }
 
     "no print media type" in {
       val config = new PdfConfig {
-        printMediaType := false
+        printMediaType := Some(false)
       }
       PdfConfig.toParameters(config) should contain("--no-print-media-type")
     }

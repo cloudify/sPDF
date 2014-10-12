@@ -43,7 +43,7 @@ trait PdfConfig {
 
   val minimumFontSize = Parameter[Int]("minimum-font-size")
 
-  val noBackground = Parameter[Boolean]("no-background")
+  val background = Parameter[Option[Boolean]]("background")
 
   val orientation = Parameter[PageOrientation]("orientation")
 
@@ -87,7 +87,7 @@ trait PdfConfig {
 
   val headerLeft = Parameter[String]("header-left")
 
-  val headerLine = Parameter[Boolean]("header-line")
+  val headerLine = Parameter[Option[Boolean]]("header-line")
 
   val headerRight = Parameter[String]("header-right")
 
@@ -137,11 +137,11 @@ trait PdfConfig {
 
   val tableOfContentNoDots = Parameter[Boolean]("toc-no-dots")
 
-  val outline = Parameter[Boolean]("outline")
+  val outline = Parameter[Option[Boolean]]("outline")
 
   val outlineDepth = Parameter[Int]("outline-depth")
 
-  val printMediaType = NegatableParameter("print-media-type")
+  val printMediaType = Parameter[Option[Boolean]]("print-media-type")
 
 }
 
@@ -189,7 +189,7 @@ object PdfConfig {
       marginRight.toParameter,
       marginTop.toParameter,
       minimumFontSize.toParameter,
-      noBackground.toParameter,
+      background.toParameter,
       orientation.toParameter,
       outline.toParameter,
       outlineDepth.toParameter,
