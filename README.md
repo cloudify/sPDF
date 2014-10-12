@@ -20,7 +20,7 @@ It's also possible to embed javascript code in the pages, `wkhtmltopdf` will wai
 Add the following to your sbt build (for Scala 2.9.1, Scala 2.9.2, Scala 2.9.3, and Scala 2.10.x!):
 
 ```scala
-libraryDependencies += "io.github.cloudify" %% "spdf" % "1.0.0"
+libraryDependencies += "io.github.cloudify" %% "spdf" % "1.1.0"
 ```
 
 ## Usage ##
@@ -131,4 +131,4 @@ val result = Future { pdf.run(new URL("http://www.google.com"), new File("google
 
 ## Copyright ##
 
-Copyright (c) 2013 Federico Feroldi. See `LICENSE` for details.
+Copyright (c) 2013, 2014 Federico Feroldi. See `LICENSE` for details.
