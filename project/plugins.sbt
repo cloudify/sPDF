@@ -1,4 +1,4 @@
-addSbtPlugin("com.typesafe.sbt" % "sbt-pgp" % "0.8.1")
+addSbtPlugin("com.typesafe.sbt" % "sbt-pgp" % "0.8.3")
 
 resolvers += "jgit-repo" at "http://download.eclipse.org/jgit/maven"
 
