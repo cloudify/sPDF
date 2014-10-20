@@ -17,7 +17,7 @@ organization := "io.github.cloudify"
 /* scala versions and options */
 scalaVersion := "2.10.2"
 
-crossScalaVersions := Seq("2.9.1", "2.9.2", "2.9.3", "2.10.0", "2.10.1", "2.10.2")
+crossScalaVersions := Seq("2.9.1", "2.9.2", "2.9.3", "2.10.0", "2.10.1", "2.10.2", "2.10.4", "2.11.1")
 
 // These options will be used for *all* versions.
 scalacOptions ++= Seq(
@@ -72,9 +72,32 @@ scmInfo := Some(
 
 /* dependencies */
 libraryDependencies ++= Seq (
-  "org.scalatest"   %% "scalatest"      % "1.9.1" % "test",
-  "org.mockito"     %  "mockito-all"    % "1.9.0" % "test"
+  "org.mockito"     %  "mockito-all"    % "1.10.8" % "test"
 )
+
+def scalatestDependency(scalaVersion: String) = scalaVersion match {
+  case v if v.startsWith("2.9") =>  "org.scalatest" %% "scalatest"  % "1.9.2" % "test"
+  case _ =>                         "org.scalatest" %% "scalatest"  % "2.2.2" % "test"
+}
+
+// use different versions of scalatest for different versions of scala
+libraryDependencies <+= scalaVersion(scalatestDependency(_))
+
+// add scala-xml dependency when needed (for Scala 2.11 and newer) in a robust way
+// this mechanism supports cross-version publishing
+// taken from: http://github.com/scala/scala-module-dependency-sample
+libraryDependencies := {
+  CrossVersion.partialVersion(scalaVersion.value) match {
+    // if scala 2.11+ is used, add dependency on scala-xml module
+    case Some((2, scalaMajor)) if scalaMajor >= 11 =>
+      libraryDependencies.value ++ Seq(
+        "org.scala-lang.modules" %% "scala-xml" % "1.0.1",
+        "org.scala-lang.modules" %% "scala-parser-combinators" % "1.0.1"
+      )
+    case _ =>
+      libraryDependencies.value
+  }
+}
 
 /* publishing */
 publishMavenStyle := true
