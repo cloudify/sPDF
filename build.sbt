@@ -15,9 +15,9 @@ licenses := Seq(
 organization := "io.github.cloudify"
 
 /* scala versions and options */
-scalaVersion := "2.10.2"
+scalaVersion := "2.10.4"
 
-crossScalaVersions := Seq("2.9.1", "2.9.2", "2.9.3", "2.10.0", "2.10.1", "2.10.2", "2.10.4", "2.11.1")
+crossScalaVersions := Seq("2.9.3", "2.10.4", "2.11.2")
 
 // These options will be used for *all* versions.
 scalacOptions ++= Seq(
