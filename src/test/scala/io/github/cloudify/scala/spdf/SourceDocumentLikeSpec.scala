@@ -2,7 +2,7 @@ package io.github.cloudify.scala.spdf
 
 import scala.sys.process.Process
 import io.github.cloudify.scala.spdf.SourceDocumentLike._
-import java.io.{File, ByteArrayInputStream}
+import java.io.{ File, ByteArrayInputStream }
 import java.net.URL
 import org.scalatest.WordSpec
 import org.scalatest.matchers.ShouldMatchers
@@ -32,8 +32,12 @@ class SourceDocumentLikeSpec extends WordSpec with ShouldMatchers with MockitoSu
     val input = new URL("http://www.google.com")
   }
 
-  trait unsupportedUrlInput {
+  trait httpsUrlInput {
     val input = new URL("https://www.google.com")
+  }
+
+  trait unsupportedUrlInput {
+    val input = new URL("ftp://ftp.google.com")
   }
 
   "SourceDocumentLike" should {
@@ -106,6 +110,23 @@ class SourceDocumentLikeSpec extends WordSpec with ShouldMatchers with MockitoSu
     }
 
     "leave process untouched" in new urlInput {
+      URLSourceDocument.sourceFrom(input)(catProcess) should equal(catProcess)
+    }
+
+    "throw an UnsupportedProtocolException if protocol is not supported" in new unsupportedUrlInput {
+      evaluating {
+        URLSourceDocument.commandParameter(input)
+      } should produce[UnsupportedProtocolException]
+    }
+  }
+
+  "httpsURLSourceDocument" should {
+
+    "have commandParameter set to URL" in new httpsUrlInput {
+      URLSourceDocument.commandParameter(input) should equal("https://www.google.com")
+    }
+
+    "leave process untouched" in new httpsUrlInput {
       URLSourceDocument.sourceFrom(input)(catProcess) should equal(catProcess)
     }
 
