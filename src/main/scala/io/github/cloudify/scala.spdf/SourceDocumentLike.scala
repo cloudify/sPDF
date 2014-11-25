@@ -69,7 +69,7 @@ object SourceDocumentLike {
   implicit object URLSourceDocument extends SourceDocumentLike[URL] {
 
     override def commandParameter(sourceDocument: URL) = sourceDocument.getProtocol match {
-      case "http" | "file" => sourceDocument.toString
+      case "https" | "http" | "file" => sourceDocument.toString
       case _ => throw new UnsupportedProtocolException(sourceDocument)
     }
 
