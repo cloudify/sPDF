@@ -19,6 +19,9 @@ scalaVersion := "2.10.4"
 
 crossScalaVersions := Seq("2.9.3", "2.10.4", "2.11.2")
 
+// release cross builds
+ReleaseKeys.crossBuild := true
+
 // These options will be used for *all* versions.
 scalacOptions ++= Seq(
   "-deprecation",
