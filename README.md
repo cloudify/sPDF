@@ -17,10 +17,10 @@ It's also possible to embed javascript code in the pages, `wkhtmltopdf` will wai
 
 ## Installation ##
 
-Add the following to your sbt build (for Scala 2.9.1, Scala 2.9.2, Scala 2.9.3, and Scala 2.10.x!):
+Add the following to your sbt build (for Scala 2.9.x, Scala 2.10.x and Scala 2.11.x!):
 
 ```scala
-libraryDependencies += "io.github.cloudify" %% "spdf" % "1.2.0"
+libraryDependencies += "io.github.cloudify" %% "spdf" % "1.3.0"
 ```
 
 ## Usage ##
