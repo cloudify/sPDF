@@ -1,6 +1,8 @@
+import SonatypeKeys._
+
 releaseSettings
 
-import SonatypeKeys._
+sonatypeSettings
 
 name := "sPDF"
 
