@@ -2,7 +2,7 @@
 
 sPDF ( pronounced _speedy-f_ ) is a Scala library that makes it super easy to create complex PDFs from plain old HTML, CSS and Javascript.
 
-On the backend it uses [wkhtmltopdf](http://github.com/antialize/wkhtmltopdf) which renders HTML using Webkit.
+On the backend it uses [wkhtmltopdf](http://wkhtmltopdf.org) which renders HTML using Webkit.
 
 __sPDF__ is heavily inspired by Ruby's [PdfKit](https://github.com/pdfkit/pdfkit) gem.
 
@@ -53,31 +53,7 @@ libraryDependencies += "io.github.cloudify" %% "spdf" % "1.3.1"
 
 ## Installing wkhtmltopdf ##
 
-Visit the [wkhtmltopdf homepage](http://code.google.com/p/wkhtmltopdf/).
-
-### Linux
-
-Download the static binary for your architecture at the [wkhtmltopdf downloads list](http://code.google.com/p/wkhtmltopdf/downloads/list), extract the file to a directory that is in your `PATH`, such as `/opt` or `/usr/local/bin` and run from there.
-
-#### Debian / Ubuntu ####
-
-```sh
-	apt-get install wkhtmltopdf
-```
-
-### Windows
-
-Download the installer from the [wkhtmltopdf downloads list](http://code.google.com/p/wkhtmltopdf/downloads/list) and tell `Pdf` where it is.
-
-### Mac
-
-Download the disk image from [wkhtmltopdf downloads list](http://code.google.com/p/wkhtmltopdf/downloads/list) and copy the file to a directory in your `PATH`.
-
-Otherwise, if you have __homebrew__, run:
-
-```sh
-brew install wkhtmltopdf
-```
+Visit the [wkhtmltopdf downloads page](http://wkhtmltopdf.org/downloads.html) and install the appropriate package for your platform.
 
 ## Troubleshooting ##
 
