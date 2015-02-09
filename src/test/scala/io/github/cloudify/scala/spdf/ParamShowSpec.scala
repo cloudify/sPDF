@@ -1,6 +1,6 @@
 package io.github.cloudify.scala.spdf
 
-import io.github.cloudify.scala.spdf.ParamShow.{BooleanParamShow, StringParamShow}
+import io.github.cloudify.scala.spdf.ParamShow.{BooleanParamShow, StringParamShow, IterableParamShow}
 import org.scalatest.WordSpec
 import org.scalatest.matchers.ShouldMatchers
 
@@ -22,6 +22,14 @@ class ParamShowSpec extends WordSpec with ShouldMatchers {
 
     "return empty parameter when false" in {
       BooleanParamShow.show("param", value = false) should equal(Iterable.empty)
+    }
+
+  }
+
+  "IterableParamShow" should {
+
+    "represent a repeatable parameter" in {
+      IterableParamShow.show("param", List("a", "b")) should equal(Seq("--param", "a", "--param", "b"))
     }
 
   }

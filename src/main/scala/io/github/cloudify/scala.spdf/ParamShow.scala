@@ -22,6 +22,12 @@ object ParamShow {
     }
   }
 
+  implicit object IterableParamShow extends ParamShow[Iterable[String]] {
+    override def show(name: String, value: Iterable[String]): Iterable[String] = {
+      value flatMap (x => formatParam(name, Some(x)))
+    }
+  }
+
   implicit object OptionBooleanParamShow extends ParamShow[Option[Boolean]] {
     override def show(name: String, valueOpt: Option[Boolean]): Iterable[String] =
       valueOpt.toIterable.flatMap { formatParam(name, _) }
