@@ -21,7 +21,7 @@ organization := "io.github.cloudify"
 /* scala versions and options */
 scalaVersion := "2.10.4"
 
-crossScalaVersions := Seq("2.9.3", "2.10.4", "2.11.2")
+crossScalaVersions := Seq("2.9.3", "2.10.4", "2.11.5")
 
 // release cross builds
 ReleaseKeys.crossBuild := true
