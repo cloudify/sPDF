@@ -143,6 +143,8 @@ trait PdfConfig {
 
   val printMediaType = Parameter[Option[Boolean]]("print-media-type")
   
+  val userStyleSheet = Parameter[String]("user-style-sheet")
+  
   val username = Parameter[String]("username")
   
   val password = Parameter[String]("password")
@@ -229,6 +231,7 @@ object PdfConfig {
       tableOfContentLevel7Indentation.toParameter,
       tableOfContentNoDots.toParameter,
       title.toParameter,
+      userStyleSheet.toParameter,
       username.toParameter,
       viewportSize.toParameter,
       zoom.toParameter
