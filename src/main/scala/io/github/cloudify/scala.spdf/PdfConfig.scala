@@ -237,7 +237,10 @@ object PdfConfig {
    * @return
    */
   def findExecutable: Option[String] = try {
-    Option("which wkhtmltopdf".!!.trim).filter(_.nonEmpty)
+    val os = System.getProperty("os.name").toLowerCase
+    val cmd = if(os.contains("windows")) "where wkhtmltopdf" else "which wkhtmltopdf"
+
+    Option(cmd.!!.trim).filter(_.nonEmpty)
   } catch {
     case _: RuntimeException => None
   }
