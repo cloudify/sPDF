@@ -13,6 +13,8 @@ trait PdfConfig {
    * See `wkhtmltopdf --extended-help` for a description of each option
    */
 
+  val allow = Parameter[Iterable[String]]("allow")
+
   val defaultHeader = Parameter[Boolean]("default-header")
 
   val disableExternalLinks = Parameter[Boolean]("disable-external-links")
@@ -164,6 +166,7 @@ object PdfConfig {
   def toParameters(config: PdfConfig): Seq[String] = {
     import config._
     Seq(
+      allow.toParameter,
       convertForms.toParameter,
       defaultHeader.toParameter,
       disableExternalLinks.toParameter,
