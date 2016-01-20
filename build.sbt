@@ -19,9 +19,9 @@ licenses := Seq(
 organization := "io.github.cloudify"
 
 /* scala versions and options */
-scalaVersion := "2.10.4"
+scalaVersion := "2.10.6"
 
-crossScalaVersions := Seq("2.9.3", "2.10.4", "2.11.5")
+crossScalaVersions := Seq("2.9.3", "2.10.6", "2.11.7")
 
 // release cross builds
 ReleaseKeys.crossBuild := true
@@ -152,4 +152,3 @@ git.remoteRepo := "git@github.com:cloudify/sPDF.git"
 seq(lsSettings:_*)
 
 (LsKeys.tags in LsKeys.lsync) := Seq("pdf", "webkit")
-
