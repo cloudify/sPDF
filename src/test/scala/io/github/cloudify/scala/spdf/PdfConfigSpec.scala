@@ -22,6 +22,14 @@ class PdfConfigSpec extends WordSpec with ShouldMatchers {
       PdfConfig.toParameters(config) should equal(Seq("--forms", "--encoding", "UTF-8", "--margin-bottom", "1in", "--minimum-font-size", "3", "--orientation", "Landscape", "--zoom", "%.2f".format(1.23f)))
     }
 
+    "no pdf compression" in {
+      val config = new PdfConfig {
+        noPdfCompression := true
+      }
+
+      PdfConfig.toParameters(config) should contain("--no-pdf-compression")
+    }
+
     "generate the --allow parameter" in {
       val config = new PdfConfig {
         allow := List("/some/path", "/some/other/path")

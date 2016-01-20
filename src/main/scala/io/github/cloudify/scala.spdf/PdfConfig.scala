@@ -23,7 +23,10 @@ trait PdfConfig {
 
   val disableJavascript = Parameter[Boolean]("disable-javascript")
 
+  @deprecated("Use noPdfCompression instead", "1.3.1")
   val disablePdfCompression = Parameter[Boolean]("disable-pdf-compression")
+
+  val noPdfCompression = Parameter[Boolean]("no-pdf-compression")
 
   val disableSmartShrinking = Parameter[Boolean]("disable-smart-shrinking")
   
@@ -172,7 +175,7 @@ object PdfConfig {
       disableExternalLinks.toParameter,
       disableInternalLinks.toParameter,
       disableJavascript.toParameter,
-      disablePdfCompression.toParameter,
+      noPdfCompression.toParameter,
       disableSmartShrinking.toParameter,
       javascriptDelay.toParameter,
       encoding.toParameter,
