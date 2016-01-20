@@ -51,6 +51,12 @@ class PdfConfigSpec extends WordSpec with ShouldMatchers {
       PdfConfig.toParameters(config) should contain("--no-print-media-type")
     }
 
+    "check for executable in PATH" in {
+      PdfConfig.findExecutable match {
+        case Some(path) => path.contains("wkhtmltopdf") should equal(true)
+        case None => true should equal(true)
+      }
+    }
   }
 
 }
