@@ -24,6 +24,8 @@ trait PdfConfig {
   val disablePdfCompression = Parameter[Boolean]("disable-pdf-compression")
 
   val disableSmartShrinking = Parameter[Boolean]("disable-smart-shrinking")
+  
+  val javascriptDelay = Parameter[Int]("javascript-delay")
 
   val convertForms = Parameter[Boolean]("forms")
 
@@ -169,6 +171,7 @@ object PdfConfig {
       disableJavascript.toParameter,
       disablePdfCompression.toParameter,
       disableSmartShrinking.toParameter,
+      javascriptDelay.toParameter,
       encoding.toParameter,
       footerCenter.toParameter,
       footerFontName.toParameter,
