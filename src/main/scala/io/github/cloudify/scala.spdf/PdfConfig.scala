@@ -29,7 +29,7 @@ trait PdfConfig {
   val noPdfCompression = Parameter[Boolean]("no-pdf-compression")
 
   val disableSmartShrinking = Parameter[Boolean]("disable-smart-shrinking")
-  
+
   val javascriptDelay = Parameter[Int]("javascript-delay")
 
   val convertForms = Parameter[Boolean]("forms")
@@ -149,10 +149,14 @@ trait PdfConfig {
   val outlineDepth = Parameter[Int]("outline-depth")
 
   val printMediaType = Parameter[Option[Boolean]]("print-media-type")
-  
+
+  val userStyleSheet = Parameter[String]("user-style-sheet")
+
   val username = Parameter[String]("username")
-  
+
   val password = Parameter[String]("password")
+
+  val viewportSize = Parameter[String]("viewport-size")
 
 }
 
@@ -170,6 +174,7 @@ object PdfConfig {
     import config._
     Seq(
       allow.toParameter,
+      background.toParameter,
       convertForms.toParameter,
       defaultHeader.toParameter,
       disableExternalLinks.toParameter,
@@ -202,7 +207,6 @@ object PdfConfig {
       marginRight.toParameter,
       marginTop.toParameter,
       minimumFontSize.toParameter,
-      background.toParameter,
       orientation.toParameter,
       outline.toParameter,
       outlineDepth.toParameter,
@@ -210,6 +214,8 @@ object PdfConfig {
       pageOffset.toParameter,
       pageSize.toParameter,
       pageWidth.toParameter,
+      password.toParameter,
+      printMediaType.toParameter,
       tableOfContent.toParameter,
       tableOfContentDepth.toParameter,
       tableOfContentDisableBackLinks.toParameter,
@@ -234,10 +240,10 @@ object PdfConfig {
       tableOfContentLevel7Indentation.toParameter,
       tableOfContentNoDots.toParameter,
       title.toParameter,
-      zoom.toParameter,
-      printMediaType.toParameter,
+      userStyleSheet.toParameter,
       username.toParameter,
-      password.toParameter
+      viewportSize.toParameter,
+      zoom.toParameter
     ).flatten
   }
 
