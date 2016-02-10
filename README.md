@@ -12,7 +12,7 @@ The main features of __sPDF__ are:
 * can read HTML from several sources: `java.io.File`, `java.io.InputStream`, `java.net.URL`, `scala.xml.Elem`, and `String`
 * can write PDFs to `File` and `OutputStream`
 
-Th source HTML can reference to images and stylesheet files as long as the URLs point to the absolute path of the source file.
+The source HTML can reference to images and stylesheet files as long as the URLs point to the absolute path of the source file.
 It's also possible to embed javascript code in the pages, `wkhtmltopdf` will wait for the document ready event before generating the PDF.
 
 ## Installation ##
