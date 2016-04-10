@@ -158,6 +158,7 @@ trait PdfConfig {
 
   val viewportSize = Parameter[String]("viewport-size")
 
+  val useXServer = Parameter[Boolean]("use-xserver")
 }
 
 object PdfConfig {
@@ -242,6 +243,7 @@ object PdfConfig {
       title.toParameter,
       userStyleSheet.toParameter,
       username.toParameter,
+      useXServer.toParameter,
       viewportSize.toParameter,
       zoom.toParameter
     ).flatten
