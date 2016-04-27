@@ -51,6 +51,13 @@ class PdfConfigSpec extends WordSpec with ShouldMatchers {
       PdfConfig.toParameters(config) should contain("--no-print-media-type")
     }
 
+    "use x-server" in {
+      val config = new PdfConfig {
+              useXServer := Option(true)
+       }
+       PdfConfig.toParameters(config) should contain("--use-xserver")
+    }
+
     "check for executable in PATH" in {
       PdfConfig.findExecutable match {
         case Some(path) => path.contains("wkhtmltopdf") should equal(true)
