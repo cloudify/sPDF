@@ -115,3 +115,5 @@ val result = Future { pdf.run(new URL("http://www.google.com"), new File("google
 ## Copyright ##
 
 Copyright (c) 2013, 2014 Federico Feroldi. See `LICENSE` for details.
+
+https://github.com/wkhtmltopdf/wkhtmltopdf/issues/1508
