@@ -2,10 +2,10 @@ package io.github.cloudify.scala.spdf
 
 import java.io.File
 import scala.sys.process._
-import org.scalatest.matchers.ShouldMatchers
+import org.scalatest.Matchers
 import org.scalatest.WordSpec
 
-class WrappedPdfSpec extends WordSpec with ShouldMatchers {
+class WrappedPdfSpec extends WordSpec with Matchers {
 
   "A Pdf" should {
 
