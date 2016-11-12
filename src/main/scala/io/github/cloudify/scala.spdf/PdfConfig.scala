@@ -32,7 +32,7 @@ trait PdfConfig {
 
   val javascriptDelay = Parameter[Int]("javascript-delay")
 
-  val convertForms = Parameter[Boolean]("forms")
+  val enableForms = Parameter[Boolean]("enable-forms")
 
   val encoding = Parameter[String]("encoding", "UTF-8")
 
@@ -176,7 +176,6 @@ object PdfConfig {
     Seq(
       allow.toParameter,
       background.toParameter,
-      convertForms.toParameter,
       defaultHeader.toParameter,
       disableExternalLinks.toParameter,
       disableInternalLinks.toParameter,
@@ -184,6 +183,7 @@ object PdfConfig {
       noPdfCompression.toParameter,
       disableSmartShrinking.toParameter,
       javascriptDelay.toParameter,
+      enableForms.toParameter,
       encoding.toParameter,
       footerCenter.toParameter,
       footerFontName.toParameter,
