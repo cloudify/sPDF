@@ -1,8 +1,3 @@
-import SonatypeKeys._
-
-releaseSettings
-
-sonatypeSettings
 
 name := "sPDF"
 
@@ -22,7 +17,7 @@ scalaVersion := "2.12.0"
 
 crossScalaVersions := Seq("2.10.6", "2.11.8", "2.12.0")
 
-ReleaseKeys.crossBuild := true
+releaseCrossBuild := true
 
 scalacOptions ++= Seq(
   "-deprecation",
@@ -67,9 +62,9 @@ libraryDependencies ++= Seq (
 // publishing
 publishMavenStyle := true
 
-publishTo <<= version { (v: String) =>
+publishTo := {
   val nexus = "https://oss.sonatype.org/"
-  if (v.trim.endsWith("SNAPSHOT"))
+  if (version.value.trim.endsWith("SNAPSHOT"))
     Some("snapshots" at nexus + "content/repositories/snapshots")
   else
     Some("releases"  at nexus + "service/local/staging/deploy/maven2")
@@ -98,15 +93,3 @@ pomExtra := (
 
 // Josh Suereth's step-by-step guide to publishing on sonatype
 // http://www.scala-sbt.org/using_sonatype.html
-
-site.settings
-
-site.includeScaladoc()
-
-ghpages.settings
-
-git.remoteRepo := "git@github.com:cloudify/sPDF.git"
-
-seq(lsSettings:_*)
-
-(LsKeys.tags in LsKeys.lsync) := Seq("pdf", "webkit")
