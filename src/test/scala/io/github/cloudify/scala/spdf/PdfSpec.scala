@@ -2,10 +2,10 @@ package io.github.cloudify.scala.spdf
 
 import java.io.File
 import scala.sys.process._
-import org.scalatest.matchers.ShouldMatchers
+import org.scalatest.Matchers
 import org.scalatest.WordSpec
 
-class PdfSpec extends WordSpec with ShouldMatchers {
+class PdfSpec extends WordSpec with Matchers {
 
   "A Pdf" should {
 
@@ -13,13 +13,13 @@ class PdfSpec extends WordSpec with ShouldMatchers {
       val file = new File("notexecutable")
       val filePath = file.getAbsolutePath
 
-      evaluating {
+      assertThrows[NoExecutableException] {
         new Pdf(filePath, PdfConfig.default)
-      } should produce[NoExecutableException]
+      }
 
-      evaluating {
+      assertThrows[NoExecutableException] {
         Pdf(filePath, PdfConfig.default)
-      } should produce[NoExecutableException]
+      }
 
     }
 
