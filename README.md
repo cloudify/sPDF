@@ -51,6 +51,36 @@ libraryDependencies += "io.github.cloudify" %% "spdf" % "1.3.1"
 	pdf.run(new URL("http://www.google.com"), new File("google.pdf"))
 ```
 
+If you want to use sPDF in headless mode on debian you'll need to call to wkhtmltopdf through a virtualizer like xvfb-run.
+This is because wkhtmltopdf does not support running in headless mode on debian through the apt package. To use sPDF
+in this kind of environment you need to use WrappedPdf instead of Pdf. For Example:
+
+```scala
+	import io.github.cloudify.scala.spdf._
+	import java.io._
+	import java.net._
+
+	// Create a new Pdf converter with a custom configuration
+	// run `wkhtmltopdf --extended-help` for a full list of options
+	val pdf = WrappedPdf(Seq("xvfb-run", "wkhtmltopdf"), new PdfConfig {
+	  orientation := Landscape
+	  pageSize := "Letter"
+	  marginTop := "1in"
+	  marginBottom := "1in"
+	  marginLeft := "1in"
+	  marginRight := "1in"
+	})
+
+	val page = <html><body><h1>Hello World</h1></body></html>
+
+	// Save the PDF generated from the above HTML into a Byte Array
+	val outputStream = new ByteArrayOutputStream
+	pdf.run(page, outputStream)
+
+	// Save the PDF of Google's homepage into a file
+	pdf.run(new URL("http://www.google.com"), new File("google.pdf"))
+```
+
 ## Installing wkhtmltopdf ##
 
 Visit the [wkhtmltopdf downloads page](http://wkhtmltopdf.org/downloads.html) and install the appropriate package for your platform.
