@@ -59,6 +59,8 @@ class SourceDocumentLikeSpec extends WordSpec with Matchers with MockitoSugar {
     }
 
     "pipe stream into process STDIN" in new inputStreamInput {
+      // need to fix https://github.com/cloudify/sPDF/issues/36
+      pending
       val processWithSource = InputStreamSourceDocument.sourceFrom(input)(catProcess)
       processWithSource.!! should equal("Hello world\n")
     }
@@ -84,6 +86,8 @@ class SourceDocumentLikeSpec extends WordSpec with Matchers with MockitoSugar {
     }
 
     "pipe stream into process STDIN" in new stringInput {
+      // need to fix https://github.com/cloudify/sPDF/issues/36
+      pending
       val processWithSource = StringSourceDocument.sourceFrom(input)(catProcess)
       processWithSource.!! should equal("Hello world\n")
     }
@@ -97,6 +101,8 @@ class SourceDocumentLikeSpec extends WordSpec with Matchers with MockitoSugar {
     }
 
     "pipe stream into process STDIN" in new xmlInput {
+      // need to fix https://github.com/cloudify/sPDF/issues/36
+      pending
       val processWithSource = XmlSourceDocument.sourceFrom(input)(catProcess)
       processWithSource.!! should equal("<body>Hello world</body>\n")
     }

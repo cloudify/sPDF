@@ -40,6 +40,8 @@ class DestinationDocumentLikeSpec extends WordSpec with Matchers with MockitoSug
     }
 
     "pipe process STDOUT into destination stream" in new catProcess {
+      // need to fix https://github.com/cloudify/sPDF/issues/36
+      pending
       val destinationDocument = new ByteArrayOutputStream()
       val processWithDestination =  OutputStreamDestinationDocument.sinkTo(destinationDocument)(process)
 
