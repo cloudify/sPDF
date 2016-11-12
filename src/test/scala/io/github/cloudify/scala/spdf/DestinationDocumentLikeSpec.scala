@@ -4,10 +4,10 @@ import java.io.{OutputStream, ByteArrayOutputStream, File}
 import io.github.cloudify.scala.spdf.DestinationDocumentLike.{OutputStreamDestinationDocument, FileDestinationDocument}
 import scala.sys.process._
 import org.scalatest.WordSpec
-import org.scalatest.mock.MockitoSugar
-import org.scalatest.matchers.ShouldMatchers
+import org.scalatest.mockito.MockitoSugar
+import org.scalatest.Matchers
 
-class DestinationDocumentLikeSpec extends WordSpec with ShouldMatchers with MockitoSugar {
+class DestinationDocumentLikeSpec extends WordSpec with Matchers with MockitoSugar {
 
   trait catProcess {
     val process = Process(Seq("cat", "-"))

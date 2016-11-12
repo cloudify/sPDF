@@ -1,9 +1,9 @@
 package io.github.cloudify.scala.spdf
 
 import org.scalatest.WordSpec
-import org.scalatest.matchers.ShouldMatchers
+import org.scalatest.Matchers
 
-class CommandOptionSpec extends WordSpec with ShouldMatchers {
+class CommandOptionSpec extends WordSpec with Matchers {
 
   def instantiatedWith = afterWord("instantiated with")
 
