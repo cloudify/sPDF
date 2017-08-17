@@ -26,6 +26,7 @@ class Image(executablePath: String, config: ImageConfig) {
     Seq(executablePath) ++
       ImageConfig.toParameters(config) ++
       Seq(
+        "--quiet",
         implicitly[SourceDocumentLike[A]].commandParameter(source),
         implicitly[DestinationDocumentLike[B]].commandParameter(destination)
       )
