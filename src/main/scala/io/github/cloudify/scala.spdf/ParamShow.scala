@@ -1,5 +1,8 @@
 package io.github.cloudify.scala.spdf
 
+import java.text.{DecimalFormat, DecimalFormatSymbols}
+import java.util.{Formatter, Locale}
+
 /**
  * Renders a parameter of type T to a sequence of strings that will be
  * appended to the command line.
@@ -39,8 +42,11 @@ object ParamShow {
   }
 
   implicit object FloatParamShow extends ParamShow[Float] {
+    val dformat: DecimalFormatSymbols = DecimalFormatSymbols.getInstance()
+    dformat.setDecimalSeparator('.')
+
     override def show(name: String, value: Float): Iterable[String] =
-      formatParam(name, Some("%.2f".format(value)))
+      formatParam(name, Some(new DecimalFormat("0.00", dformat).format(value)))
   }
 
   implicit object PageOrientationParamShow extends ParamShow[PageOrientation] {

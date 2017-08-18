@@ -1,6 +1,6 @@
 package io.github.cloudify.scala.spdf
 
-import io.github.cloudify.scala.spdf.ParamShow.{BooleanParamShow, StringParamShow, IterableParamShow}
+import io.github.cloudify.scala.spdf.ParamShow.{BooleanParamShow, FloatParamShow, IterableParamShow, StringParamShow}
 import org.scalatest.WordSpec
 import org.scalatest.Matchers
 
@@ -30,6 +30,14 @@ class ParamShowSpec extends WordSpec with Matchers {
 
     "represent a repeatable parameter" in {
       IterableParamShow.show("param", List("a", "b")) should equal(Seq("--param", "a", "--param", "b"))
+    }
+
+  }
+
+  "FloatParamShow" should {
+
+    "represent a properly formatted float parameter" in {
+      FloatParamShow.show("zoom", 0.2f) should equal(Seq("--zoom", "0.20"))
     }
 
   }
