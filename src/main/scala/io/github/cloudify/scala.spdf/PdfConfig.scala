@@ -13,28 +13,15 @@ trait PdfConfig {
    * See `wkhtmltopdf --extended-help` for a description of each option
    */
 
-  val allow = Parameter[Iterable[String]]("allow")
+  val collate = Parameter[Boolean]("collate")
 
-  val defaultHeader = Parameter[Boolean]("default-header")
+  val noCollate = Parameter[Boolean]("no-collate")
 
-  val disableExternalLinks = Parameter[Boolean]("disable-external-links")
+  val cookieJar = Parameter[String]("cookie-jar")
 
-  val disableInternalLinks = Parameter[Boolean]("disable-internal-links")
+  val copies = Parameter[Int]("copies")
 
-  val disableJavascript = Parameter[Boolean]("disable-javascript")
-
-  @deprecated("Use noPdfCompression instead", "1.3.1")
-  val disablePdfCompression = Parameter[Boolean]("disable-pdf-compression")
-
-  val noPdfCompression = Parameter[Boolean]("no-pdf-compression")
-
-  val disableSmartShrinking = Parameter[Boolean]("disable-smart-shrinking")
-
-  val javascriptDelay = Parameter[Int]("javascript-delay")
-
-  val enableForms = Parameter[Boolean]("enable-forms")
-
-  val encoding = Parameter[String]("encoding", "UTF-8")
+  val dpi = Parameter[Int]("dpi")
 
   val grayScale = Parameter[Boolean]("grayscale")
 
@@ -48,116 +35,249 @@ trait PdfConfig {
 
   val marginTop = Parameter[String]("margin-top")
 
-  val minimumFontSize = Parameter[Int]("minimum-font-size")
-
-  val background = Parameter[Option[Boolean]]("background")
-
   val orientation = Parameter[PageOrientation]("orientation")
 
   val pageHeight = Parameter[String]("page-height")
-
-  val pageOffset = Parameter[String]("page-offset")
-
-  val pageSize = Parameter[String]("page-size")
 
   val pageWidth = Parameter[String]("page-width")
 
   val title = Parameter[String]("title")
 
-  val tableOfContent = Parameter[Boolean]("toc")
+  val allow = Parameter[Iterable[String]]("allow")
 
-  val zoom = Parameter[Float]("zoom")
+  val background = Parameter[Boolean]("background")
 
-  val footerCenter = Parameter[String]("footer-center")
+  val noBackground = Parameter[Boolean]("no-background")
 
-  val footerFontName = Parameter[String]("footer-font-name")
+  val bypassProxyFor = Parameter[Iterable[String]]("bypass-proxy-for")
 
-  val footerFontSize = Parameter[String]("footer-font-size")
+  val cacheDir = Parameter[String]("cache-dir")
 
-  val footerHtml = Parameter[String]("footer-html")
+  val checkboxCheckedSvg = Parameter[String]("checkbox-checked-svg")
 
-  val footerLeft = Parameter[String]("footer-left")
+  val checkboxSvg = Parameter[String]("checkbox-svg")
 
-  val footerLine = Parameter[Boolean]("footer-line")
+  val cookie = Parameter[Iterable[String]]("cookie")
 
-  val footerRight = Parameter[String]("footer-right")
+  val customHeader = Parameter[Iterable[String]]("custom-header")
 
-  val footerSpacing = Parameter[Float]("footer-spacing")
+  val customHeaderPropagation = Parameter[Boolean]("custom-header-propagation")
 
-  val headerCenter = Parameter[String]("header-center")
+  val noCustomHeaderPropagation = Parameter[Boolean]("no-custom-header-propagation")
 
-  val headerFontName = Parameter[String]("header-font-name")
+  val debugJavascript = Parameter[Boolean]("debug-javascript")
 
-  val headerFontSize = Parameter[String]("header-font-size")
+  val noDebugJavascript = Parameter[Boolean]("no-debug-javascript")
 
-  val headerHtml = Parameter[String]("header-html")
+  val encoding = Parameter[String]("encoding")
 
-  val headerLeft = Parameter[String]("header-left")
+  val images = Parameter[Boolean]("images")
 
-  val headerLine = Parameter[Option[Boolean]]("header-line")
+  val noImages = Parameter[Boolean]("no-images")
 
-  val headerRight = Parameter[String]("header-right")
+  val disableJavascript = Parameter[Boolean]("disable-javascript")
 
-  val headerSpacing = Parameter[Float]("header-spacing")
+  val enableJavascript = Parameter[Boolean]("enable-javascript")
 
-  val tableOfContentDepth = Parameter[Int]("toc-depth")
+  val javascriptDelay = Parameter[Int]("javascript-delay")
 
-  val tableOfContentDisableBackLinks = Parameter[Boolean]("toc-disable-back-links")
+  val loadErrorHandling = Parameter[String]("load-error-handling")
 
-  val tableOfContentDisableLinks = Parameter[Boolean]("toc-disable-links")
+  val loadMediaErrorHandling = Parameter[String]("load-media-error-handling")
 
-  val tableOfContentFontName = Parameter[String]("toc-font-name")
+  val disableLocalFileAccess = Parameter[Boolean]("disable-local-file-access")
 
-  val tableOfContentHeaderFontName = Parameter[String]("toc-header-font-name")
+  val enableLocalFileAccess = Parameter[Boolean]("enable-local-file-access")
 
-  val tableOfContentHeaderFontSize = Parameter[Int]("toc-header-font-size")
+  val minimumFontSize = Parameter[Int]("minimum-font-size")
 
-  val tableOfContentHeaderText = Parameter[String]("toc-header-text")
+  val pageOffset = Parameter[Int]("page-offset")
 
-  val tableOfContentLevel1FontSize = Parameter[Int]("toc-l1-font-size")
+  val password = Parameter[String]("password")
 
-  val tableOfContentLevel1Indentation = Parameter[Int]("toc-l1-indentation")
+  val disablePlugins = Parameter[Boolean]("disable-plugins")
 
-  val tableOfContentLevel2FontSize = Parameter[Int]("toc-l2-font-size")
+  val enablePlugins = Parameter[Boolean]("enable-plugins")
 
-  val tableOfContentLevel2Indentation = Parameter[Int]("toc-l2-indentation")
+  val post = Parameter[Iterable[String]]("post")
 
-  val tableOfContentLevel3FontSize = Parameter[Int]("toc-l3-font-size")
+  val postFile = Parameter[String]("post-file")
 
-  val tableOfContentLevel3Indentation = Parameter[Int]("toc-l3-indentation")
+  val proxy = Parameter[String]("proxy")
 
-  val tableOfContentLevel4FontSize = Parameter[Int]("toc-l4-font-size")
+  val radioButtonCheckedSvg = Parameter[String]("radiobuttion-checked-svg")
 
-  val tableOfContentLevel4Indentation = Parameter[Int]("toc-l4-indentation")
+  val radioButtonSvg = Parameter[String]("radiobuttion-svg")
 
-  val tableOfContentLevel5FontSize = Parameter[Int]("toc-l5-font-size")
+  val runScript = Parameter[String]("run-script")
 
-  val tableOfContentLevel5Indentation = Parameter[Int]("toc-l5-indentation")
+  val stopSlowScripts = Parameter[Boolean]("stop-slow-scripts")
 
-  val tableOfContentLevel6FontSize = Parameter[Int]("toc-l6-font-size")
-
-  val tableOfContentLevel6Indentation = Parameter[Int]("toc-l6-indentation")
-
-  val tableOfContentLevel7FontSize = Parameter[Int]("toc-l7-font-size")
-
-  val tableOfContentLevel7Indentation = Parameter[Int]("toc-l7-indentation")
-
-  val tableOfContentNoDots = Parameter[Boolean]("toc-no-dots")
-
-  val outline = Parameter[Option[Boolean]]("outline")
-
-  val outlineDepth = Parameter[Int]("outline-depth")
-
-  val printMediaType = Parameter[Option[Boolean]]("print-media-type")
+  val noStopSlowScripts = Parameter[Boolean]("no-stop-slow-scripts")
 
   val userStyleSheet = Parameter[String]("user-style-sheet")
 
   val username = Parameter[String]("username")
 
-  val password = Parameter[String]("password")
+  val windowStatus = Parameter[String]("window-status")
 
+  val zoom = Parameter[Float]("zoom")
+
+  // Only deprecated options from here on
+  @deprecated("No longer in use", "1.4.1")
+  val defaultHeader = Parameter[Boolean]("default-header")
+
+  @deprecated("No longer in use", "1.4.1")
+  val disableExternalLinks = Parameter[Boolean]("disable-external-links")
+
+  @deprecated("No longer in use", "1.4.1")
+  val disableInternalLinks = Parameter[Boolean]("disable-internal-links")
+
+  @deprecated("Use noPdfCompression instead", "1.3.1")
+  val disablePdfCompression = Parameter[Boolean]("disable-pdf-compression")
+
+  @deprecated("No longer in use", "1.4.1")
+  val noPdfCompression = Parameter[Boolean]("no-pdf-compression")
+
+  @deprecated("No longer in use", "1.4.1")
+  val disableSmartShrinking = Parameter[Boolean]("disable-smart-shrinking")
+
+  @deprecated("No longer in use", "1.4.1")
+  val enableForms = Parameter[Boolean]("enable-forms")
+
+  @deprecated("No longer in use", "1.4.1")
+  val pageSize = Parameter[String]("page-size")
+
+  @deprecated("No longer in use", "1.4.1")
+  val tableOfContent = Parameter[Boolean]("toc")
+
+  @deprecated("No longer in use", "1.4.1")
+  val footerCenter = Parameter[String]("footer-center")
+
+  @deprecated("No longer in use", "1.4.1")
+  val footerFontName = Parameter[String]("footer-font-name")
+
+  @deprecated("No longer in use", "1.4.1")
+  val footerFontSize = Parameter[String]("footer-font-size")
+
+  @deprecated("No longer in use", "1.4.1")
+  val footerHtml = Parameter[String]("footer-html")
+
+  @deprecated("No longer in use", "1.4.1")
+  val footerLeft = Parameter[String]("footer-left")
+
+  @deprecated("No longer in use", "1.4.1")
+  val footerLine = Parameter[Boolean]("footer-line")
+
+  @deprecated("No longer in use", "1.4.1")
+  val footerRight = Parameter[String]("footer-right")
+
+  @deprecated("No longer in use", "1.4.1")
+  val footerSpacing = Parameter[Float]("footer-spacing")
+
+  @deprecated("No longer in use", "1.4.1")
+  val headerCenter = Parameter[String]("header-center")
+
+  @deprecated("No longer in use", "1.4.1")
+  val headerFontName = Parameter[String]("header-font-name")
+
+  @deprecated("No longer in use", "1.4.1")
+  val headerFontSize = Parameter[String]("header-font-size")
+
+  @deprecated("No longer in use", "1.4.1")
+  val headerHtml = Parameter[String]("header-html")
+
+  @deprecated("No longer in use", "1.4.1")
+  val headerLeft = Parameter[String]("header-left")
+
+  @deprecated("No longer in use", "1.4.1")
+  val headerLine = Parameter[Option[Boolean]]("header-line")
+
+  @deprecated("No longer in use", "1.4.1")
+  val headerRight = Parameter[String]("header-right")
+
+  @deprecated("No longer in use", "1.4.1")
+  val headerSpacing = Parameter[Float]("header-spacing")
+
+  @deprecated("No longer in use", "1.4.1")
+  val tableOfContentDepth = Parameter[Int]("toc-depth")
+
+  @deprecated("No longer in use", "1.4.1")
+  val tableOfContentDisableBackLinks = Parameter[Boolean]("toc-disable-back-links")
+
+  @deprecated("No longer in use", "1.4.1")
+  val tableOfContentDisableLinks = Parameter[Boolean]("toc-disable-links")
+
+  @deprecated("No longer in use", "1.4.1")
+  val tableOfContentFontName = Parameter[String]("toc-font-name")
+
+  @deprecated("No longer in use", "1.4.1")
+  val tableOfContentHeaderFontName = Parameter[String]("toc-header-font-name")
+
+  @deprecated("No longer in use", "1.4.1")
+  val tableOfContentHeaderFontSize = Parameter[Int]("toc-header-font-size")
+
+  @deprecated("No longer in use", "1.4.1")
+  val tableOfContentHeaderText = Parameter[String]("toc-header-text")
+
+  @deprecated("No longer in use", "1.4.1")
+  val tableOfContentLevel1FontSize = Parameter[Int]("toc-l1-font-size")
+
+  @deprecated("No longer in use", "1.4.1")
+  val tableOfContentLevel1Indentation = Parameter[Int]("toc-l1-indentation")
+
+  @deprecated("No longer in use", "1.4.1")
+  val tableOfContentLevel2FontSize = Parameter[Int]("toc-l2-font-size")
+
+  @deprecated("No longer in use", "1.4.1")
+  val tableOfContentLevel2Indentation = Parameter[Int]("toc-l2-indentation")
+
+  @deprecated("No longer in use", "1.4.1")
+  val tableOfContentLevel3FontSize = Parameter[Int]("toc-l3-font-size")
+
+  @deprecated("No longer in use", "1.4.1")
+  val tableOfContentLevel3Indentation = Parameter[Int]("toc-l3-indentation")
+
+  @deprecated("No longer in use", "1.4.1")
+  val tableOfContentLevel4FontSize = Parameter[Int]("toc-l4-font-size")
+
+  @deprecated("No longer in use", "1.4.1")
+  val tableOfContentLevel4Indentation = Parameter[Int]("toc-l4-indentation")
+
+  @deprecated("No longer in use", "1.4.1")
+  val tableOfContentLevel5FontSize = Parameter[Int]("toc-l5-font-size")
+
+  @deprecated("No longer in use", "1.4.1")
+  val tableOfContentLevel5Indentation = Parameter[Int]("toc-l5-indentation")
+
+  @deprecated("No longer in use", "1.4.1")
+  val tableOfContentLevel6FontSize = Parameter[Int]("toc-l6-font-size")
+
+  @deprecated("No longer in use", "1.4.1")
+  val tableOfContentLevel6Indentation = Parameter[Int]("toc-l6-indentation")
+
+  @deprecated("No longer in use", "1.4.1")
+  val tableOfContentLevel7FontSize = Parameter[Int]("toc-l7-font-size")
+
+  @deprecated("No longer in use", "1.4.1")
+  val tableOfContentLevel7Indentation = Parameter[Int]("toc-l7-indentation")
+
+  @deprecated("No longer in use", "1.4.1")
+  val tableOfContentNoDots = Parameter[Boolean]("toc-no-dots")
+
+  @deprecated("No longer in use", "1.4.1")
+  val outline = Parameter[Option[Boolean]]("outline")
+
+  @deprecated("No longer in use", "1.4.1")
+  val outlineDepth = Parameter[Int]("outline-depth")
+
+  @deprecated("No longer in use", "1.4.1")
+  val printMediaType = Parameter[Option[Boolean]]("print-media-type")
+
+  @deprecated("No longer in use", "1.4.1")
   val viewportSize = Parameter[String]("viewport-size")
 
+  @deprecated("No longer in use", "1.4.1")
   val useXServer = Parameter[Boolean]("use-xserver")
 }
 
@@ -176,75 +296,58 @@ object PdfConfig {
     Seq(
       allow.toParameter,
       background.toParameter,
-      defaultHeader.toParameter,
-      disableExternalLinks.toParameter,
-      disableInternalLinks.toParameter,
+      bypassProxyFor.toParameter,
+      cacheDir.toParameter,
+      checkboxCheckedSvg.toParameter,
+      checkboxSvg.toParameter,
+      collate.toParameter,
+      cookie.toParameter,
+      cookieJar.toParameter,
+      copies.toParameter,
+      customHeader.toParameter,
+      customHeaderPropagation.toParameter,
+      debugJavascript.toParameter,
       disableJavascript.toParameter,
-      noPdfCompression.toParameter,
-      disableSmartShrinking.toParameter,
-      javascriptDelay.toParameter,
-      enableForms.toParameter,
+      disableLocalFileAccess.toParameter,
+      disablePlugins.toParameter,
+      dpi.toParameter,
+      enableJavascript.toParameter,
+      enableLocalFileAccess.toParameter,
+      enablePlugins.toParameter,
       encoding.toParameter,
-      footerCenter.toParameter,
-      footerFontName.toParameter,
-      footerFontSize.toParameter,
-      footerHtml.toParameter,
-      footerLeft.toParameter,
-      footerLine.toParameter,
-      footerRight.toParameter,
-      footerSpacing.toParameter,
       grayScale.toParameter,
-      headerCenter.toParameter,
-      headerFontName.toParameter,
-      headerFontSize.toParameter,
-      headerHtml.toParameter,
-      headerLeft.toParameter,
-      headerLine.toParameter,
-      headerRight.toParameter,
-      headerSpacing.toParameter,
+      images.toParameter,
+      javascriptDelay.toParameter,
+      loadErrorHandling.toParameter,
+      loadMediaErrorHandling.toParameter,
       lowQuality.toParameter,
       marginBottom.toParameter,
       marginLeft.toParameter,
       marginRight.toParameter,
       marginTop.toParameter,
       minimumFontSize.toParameter,
+      noBackground.toParameter,
+      noCollate.toParameter,
+      noCustomHeaderPropagation.toParameter,
+      noDebugJavascript.toParameter,
+      noImages.toParameter,
+      noStopSlowScripts.toParameter,
       orientation.toParameter,
-      outline.toParameter,
-      outlineDepth.toParameter,
       pageHeight.toParameter,
       pageOffset.toParameter,
-      pageSize.toParameter,
       pageWidth.toParameter,
       password.toParameter,
-      printMediaType.toParameter,
-      tableOfContent.toParameter,
-      tableOfContentDepth.toParameter,
-      tableOfContentDisableBackLinks.toParameter,
-      tableOfContentDisableLinks.toParameter,
-      tableOfContentFontName.toParameter,
-      tableOfContentHeaderFontName.toParameter,
-      tableOfContentHeaderFontSize.toParameter,
-      tableOfContentHeaderText.toParameter,
-      tableOfContentLevel1FontSize.toParameter,
-      tableOfContentLevel1Indentation.toParameter,
-      tableOfContentLevel2FontSize.toParameter,
-      tableOfContentLevel2Indentation.toParameter,
-      tableOfContentLevel3FontSize.toParameter,
-      tableOfContentLevel3Indentation.toParameter,
-      tableOfContentLevel4FontSize.toParameter,
-      tableOfContentLevel4Indentation.toParameter,
-      tableOfContentLevel5FontSize.toParameter,
-      tableOfContentLevel5Indentation.toParameter,
-      tableOfContentLevel6FontSize.toParameter,
-      tableOfContentLevel6Indentation.toParameter,
-      tableOfContentLevel7FontSize.toParameter,
-      tableOfContentLevel7Indentation.toParameter,
-      tableOfContentNoDots.toParameter,
+      post.toParameter,
+      postFile.toParameter,
+      proxy.toParameter,
+      radioButtonCheckedSvg.toParameter,
+      radioButtonSvg.toParameter,
+      runScript.toParameter,
+      stopSlowScripts.toParameter,
       title.toParameter,
       userStyleSheet.toParameter,
       username.toParameter,
-      useXServer.toParameter,
-      viewportSize.toParameter,
+      windowStatus.toParameter,
       zoom.toParameter
     ).flatten
   }
