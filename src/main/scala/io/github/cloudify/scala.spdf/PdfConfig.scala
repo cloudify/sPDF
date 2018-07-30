@@ -253,9 +253,11 @@ object PdfConfig {
    * Attempts to find the `wkhtmltopdf` executable in the system path.
    * @return
    */
-  def findExecutable: Option[String] = try {
+  def findExecutable: Option[String] = findExecutablePath("wkhtmltopdf")
+
+  def findExecutablePath(exec: String): Option[String] = try {
     val os = System.getProperty("os.name").toLowerCase
-    val cmd = if(os.contains("windows")) "where wkhtmltopdf" else "which wkhtmltopdf"
+    val cmd = if(os.contains("windows")) s"where $exec" else s"which $exec"
 
     Option(cmd.!!.trim).filter(_.nonEmpty)
   } catch {
