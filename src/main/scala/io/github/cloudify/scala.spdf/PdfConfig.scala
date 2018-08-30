@@ -99,6 +99,10 @@ trait PdfConfig {
   val headerRight = Parameter[String]("header-right")
 
   val headerSpacing = Parameter[Float]("header-spacing")
+  
+  val imageQuality = Parameter[Int]("image-quality")
+  
+  val imageDpi = Parameter[Int]("image-dpi")
 
   val tableOfContentDepth = Parameter[Int]("toc-depth")
 
@@ -202,6 +206,8 @@ object PdfConfig {
       headerLine.toParameter,
       headerRight.toParameter,
       headerSpacing.toParameter,
+      imageQuality.toParameter,
+      imageDpi.toParameter,
       lowQuality.toParameter,
       marginBottom.toParameter,
       marginLeft.toParameter,
