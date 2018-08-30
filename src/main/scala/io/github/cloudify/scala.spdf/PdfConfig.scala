@@ -207,7 +207,7 @@ object PdfConfig {
       headerRight.toParameter,
       headerSpacing.toParameter,
       imageQuality.toParameter,
-      imageDpi.toParamater,
+      imageDpi.toParameter,
       lowQuality.toParameter,
       marginBottom.toParameter,
       marginLeft.toParameter,
