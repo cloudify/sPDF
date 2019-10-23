@@ -13,9 +13,9 @@ licenses := Seq(
 
 organization := "io.github.cloudify"
 
-scalaVersion := "2.12.0"
+scalaVersion := "2.13.0"
 
-crossScalaVersions := Seq("2.10.6", "2.11.8", "2.12.0")
+crossScalaVersions := Seq("2.10.6", "2.11.8", "2.12.0", "2.13.0")
 
 releaseCrossBuild := true
 
@@ -46,8 +46,8 @@ libraryDependencies := {
   CrossVersion.partialVersion(scalaVersion.value) match {
     case Some((2, scalaMajor)) if scalaMajor >= 11 =>
       libraryDependencies.value ++ Seq(
-        "org.scala-lang.modules" %% "scala-xml" % "1.0.6",
-        "org.scala-lang.modules" %% "scala-parser-combinators" % "1.0.4"
+        "org.scala-lang.modules" %% "scala-xml" % "1.2.0",
+        "org.scala-lang.modules" %% "scala-parser-combinators" % "1.1.2"
       )
     case _ =>
       libraryDependencies.value
@@ -55,7 +55,7 @@ libraryDependencies := {
 }
 
 libraryDependencies ++= Seq (
-  "org.scalatest"   %% "scalatest"      % "3.0.0"   % "test",
+  "org.scalatest"   %% "scalatest"      % "3.0.8"   % "test",
   "org.mockito"     %  "mockito-all"    % "1.10.8"  % "test"
 )
 
