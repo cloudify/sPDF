@@ -6,7 +6,7 @@ import java.io.{ File, ByteArrayInputStream }
 import java.net.URL
 import org.scalatest.WordSpec
 import org.scalatest.Matchers
-import org.scalatest.mockito.MockitoSugar
+import org.scalatestplus.mockito.MockitoSugar
 
 class SourceDocumentLikeSpec extends WordSpec with Matchers with MockitoSugar {
 
@@ -43,11 +43,11 @@ class SourceDocumentLikeSpec extends WordSpec with Matchers with MockitoSugar {
   "SourceDocumentLike" should {
 
     "set commandParameter to -" in {
-      new SourceDocumentLike[Unit] {}.commandParameter(Unit) should equal("-")
+      new SourceDocumentLike[Unit] {}.commandParameter(()) should equal("-")
     }
 
     "leave process untouched" in {
-      new SourceDocumentLike[Unit] {}.sourceFrom(Unit)(catProcess) should equal(catProcess)
+      new SourceDocumentLike[Unit] {}.sourceFrom(())(catProcess) should equal(catProcess)
     }
 
   }
