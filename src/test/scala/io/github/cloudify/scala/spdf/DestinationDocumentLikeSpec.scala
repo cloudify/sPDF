@@ -4,8 +4,8 @@ import java.io.{OutputStream, ByteArrayOutputStream, File}
 import io.github.cloudify.scala.spdf.DestinationDocumentLike.{OutputStreamDestinationDocument, FileDestinationDocument}
 import scala.sys.process._
 import org.scalatest.WordSpec
-import org.scalatest.mockito.MockitoSugar
 import org.scalatest.Matchers
+import org.scalatestplus.mockito.MockitoSugar
 
 class DestinationDocumentLikeSpec extends WordSpec with Matchers with MockitoSugar {
 
@@ -15,11 +15,11 @@ class DestinationDocumentLikeSpec extends WordSpec with Matchers with MockitoSug
 
   "DestinationDocumentLike" should {
     "set commandParameter to -" in {
-      new DestinationDocumentLike[Unit] {}.commandParameter(Unit) should equal("-")
+      new DestinationDocumentLike[Unit] {}.commandParameter(()) should equal("-")
     }
 
     "leave process untouched" in new catProcess {
-      new DestinationDocumentLike[Unit] {}.sinkTo(Unit)(process) should equal(process)
+      new DestinationDocumentLike[Unit] {}.sinkTo(())(process) should equal(process)
     }
   }
 
