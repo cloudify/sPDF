@@ -1,13 +1,15 @@
 package io.github.cloudify.scala.spdf
 
-import java.io.{OutputStream, ByteArrayOutputStream, File}
-import io.github.cloudify.scala.spdf.DestinationDocumentLike.{OutputStreamDestinationDocument, FileDestinationDocument}
-import scala.sys.process._
-import org.scalatest.WordSpec
-import org.scalatest.mockito.MockitoSugar
-import org.scalatest.Matchers
+import java.io.{ByteArrayOutputStream, File, OutputStream}
 
-class DestinationDocumentLikeSpec extends WordSpec with Matchers with MockitoSugar {
+import io.github.cloudify.scala.spdf.DestinationDocumentLike.{FileDestinationDocument, OutputStreamDestinationDocument}
+import org.scalatest.matchers.should.Matchers
+import org.scalatest.wordspec.AnyWordSpec
+import org.scalatestplus.mockito.MockitoSugar
+
+import scala.sys.process._
+
+class DestinationDocumentLikeSpec extends AnyWordSpec with Matchers with MockitoSugar {
 
   trait catProcess {
     val process = Process(Seq("cat", "-"))

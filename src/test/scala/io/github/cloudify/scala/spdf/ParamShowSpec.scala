@@ -1,10 +1,10 @@
 package io.github.cloudify.scala.spdf
 
 import io.github.cloudify.scala.spdf.ParamShow.{BooleanParamShow, StringParamShow, IterableParamShow}
-import org.scalatest.WordSpec
-import org.scalatest.Matchers
+import org.scalatest.wordspec.AnyWordSpec
+import org.scalatest.matchers.should.Matchers
 
-class ParamShowSpec extends WordSpec with Matchers {
+class ParamShowSpec extends AnyWordSpec with Matchers {
 
   "StringParamShow" should {
 

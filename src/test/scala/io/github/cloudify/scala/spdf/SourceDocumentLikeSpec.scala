@@ -4,11 +4,11 @@ import scala.sys.process.Process
 import io.github.cloudify.scala.spdf.SourceDocumentLike._
 import java.io.{ File, ByteArrayInputStream }
 import java.net.URL
-import org.scalatest.WordSpec
-import org.scalatest.Matchers
-import org.scalatest.mockito.MockitoSugar
+import org.scalatest.wordspec.AnyWordSpec
+import org.scalatest.matchers.should.Matchers
+import org.scalatestplus.mockito.MockitoSugar
 
-class SourceDocumentLikeSpec extends WordSpec with Matchers with MockitoSugar {
+class SourceDocumentLikeSpec extends AnyWordSpec with Matchers with MockitoSugar {
 
   val catProcess = Process("cat")
 
