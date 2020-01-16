@@ -17,11 +17,11 @@ class DestinationDocumentLikeSpec extends AnyWordSpec with Matchers with Mockito
 
   "DestinationDocumentLike" should {
     "set commandParameter to -" in {
-      new DestinationDocumentLike[Unit] {}.commandParameter(Unit) should equal("-")
+      new DestinationDocumentLike[Unit] {}.commandParameter(()) should equal("-")
     }
 
     "leave process untouched" in new catProcess {
-      new DestinationDocumentLike[Unit] {}.sinkTo(Unit)(process) should equal(process)
+      new DestinationDocumentLike[Unit] {}.sinkTo(())(process) should equal(process)
     }
   }
 

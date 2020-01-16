@@ -43,11 +43,11 @@ class SourceDocumentLikeSpec extends AnyWordSpec with Matchers with MockitoSugar
   "SourceDocumentLike" should {
 
     "set commandParameter to -" in {
-      new SourceDocumentLike[Unit] {}.commandParameter(Unit) should equal("-")
+      new SourceDocumentLike[Unit] {}.commandParameter(()) should equal("-")
     }
 
     "leave process untouched" in {
-      new SourceDocumentLike[Unit] {}.sourceFrom(Unit)(catProcess) should equal(catProcess)
+      new SourceDocumentLike[Unit] {}.sourceFrom(())(catProcess) should equal(catProcess)
     }
 
   }
