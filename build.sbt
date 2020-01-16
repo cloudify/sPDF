@@ -13,16 +13,14 @@ licenses := Seq(
 
 organization := "io.github.cloudify"
 
-scalaVersion := "2.12.0"
-
-crossScalaVersions := Seq("2.10.6", "2.11.8", "2.12.0")
-
-releaseCrossBuild := true
-
+scalaVersion := "2.13.0"
 scalacOptions ++= Seq(
-  "-deprecation",
-  "-unchecked",
-  "-encoding", "UTF-8"
+  "-deprecation"          // Emit warning and location for usages of deprecated APIs.
+  , "-encoding", "utf-8"  // Specify character encoding used by source files.
+  , "-explaintypes"       // Explain type errors in more detail.
+  , "-feature"            // Emit warning and location for usages of features that should be imported explicitly.
+  , "-unchecked"          // Enable additional warnings where generated code depends on assumptions.
+  , "-Xfatal-warnings"    // Fail the compilation if there are any fatal warnings.
 )
 
 fork in Test := true
@@ -39,57 +37,14 @@ scmInfo := Some(
   )
 )
 
-// add dependencies on standard Scala modules, in a way
-// supporting cross-version publishing
-// taken from: http://github.com/scala/scala-module-dependency-sample
-libraryDependencies := {
-  CrossVersion.partialVersion(scalaVersion.value) match {
-    case Some((2, scalaMajor)) if scalaMajor >= 11 =>
-      libraryDependencies.value ++ Seq(
-        "org.scala-lang.modules" %% "scala-xml" % "1.0.6",
-        "org.scala-lang.modules" %% "scala-parser-combinators" % "1.0.4"
-      )
-    case _ =>
-      libraryDependencies.value
-  }
-}
+libraryDependencies ++= Seq(
+  "org.scala-lang.modules" %% "scala-xml" % "1.2.0"
+)
 
 libraryDependencies ++= Seq (
-  "org.scalatest"   %% "scalatest"      % "3.0.0"   % "test",
-  "org.mockito"     %  "mockito-all"    % "1.10.8"  % "test"
+  "org.scalatest"     %% "scalatest"             % "3.1.0"    % Test,
+  "org.scalatestplus" %% "scalatestplus-mockito" % "1.0.0-M2" % Test,
+  "org.mockito"       %  "mockito-all"           % "1.10.8"   % Test
 )
-
-// publishing
-publishMavenStyle := true
-
-publishTo := {
-  val nexus = "https://oss.sonatype.org/"
-  if (version.value.trim.endsWith("SNAPSHOT"))
-    Some("snapshots" at nexus + "content/repositories/snapshots")
-  else
-    Some("releases"  at nexus + "service/local/staging/deploy/maven2")
-}
-
-credentials += Credentials(Path.userHome / ".credentials.sonatype")
 
 publishArtifact in Test := false
-
-// publishArtifact in (Compile, packageDoc) := false
-
-// publishArtifact in (Compile, packageSrc) := false
-
-pomIncludeRepository := { _ => false }
-
-pomExtra := (
-  <developers>
-    <developer>
-      <id>cloudify</id>
-      <name>Federico Feroldi</name>
-      <email>pix@yahoo.it</email>
-      <url>http://www.pixzone.com</url>
-    </developer>
-  </developers>
-)
-
-// Josh Suereth's step-by-step guide to publishing on sonatype
-// http://www.scala-sbt.org/using_sonatype.html
