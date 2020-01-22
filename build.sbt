@@ -1,5 +1,5 @@
 
-name := "sPDF"
+name := "lib-pdf-generator"
 
 description := "Create PDFs using plain old HTML+CSS. Uses wkhtmltopdf on the back-end which renders HTML using Webkit."
 
@@ -11,13 +11,11 @@ licenses := Seq(
   ("MIT", url("http://opensource.org/licenses/MIT"))
 )
 
-organization := "io.github.cloudify"
+organization := "io.flow"
 
-scalaVersion := "2.12.0"
+scalaVersion := "2.13.1"
 
-crossScalaVersions := Seq("2.10.6", "2.11.8", "2.12.0")
-
-releaseCrossBuild := true
+crossScalaVersions := Seq("2.12.10", "2.13.1")
 
 scalacOptions ++= Seq(
   "-deprecation",
@@ -46,31 +44,39 @@ libraryDependencies := {
   CrossVersion.partialVersion(scalaVersion.value) match {
     case Some((2, scalaMajor)) if scalaMajor >= 11 =>
       libraryDependencies.value ++ Seq(
-        "org.scala-lang.modules" %% "scala-xml" % "1.0.6",
-        "org.scala-lang.modules" %% "scala-parser-combinators" % "1.0.4"
-      )
+        "org.scala-lang.modules" %% "scala-xml" % "2.0.0-M1",
+        "org.scala-lang.modules" %% "scala-parser-combinators" % "1.1.2"
+  )
     case _ =>
       libraryDependencies.value
   }
 }
 
-libraryDependencies ++= Seq (
-  "org.scalatest"   %% "scalatest"      % "3.0.0"   % "test",
-  "org.mockito"     %  "mockito-all"    % "1.10.8"  % "test"
+libraryDependencies ++= Seq(
+  "org.scalatest" %% "scalatest" % "3.1.0" % "test",
+  "org.mockito" % "mockito-all" % "1.10.19" % "test"
 )
 
 // publishing
 publishMavenStyle := true
 
+resolvers += "Artifactory" at "https://flow.jfrog.io/flow/libs-release/"
+
 publishTo := {
-  val nexus = "https://oss.sonatype.org/"
-  if (version.value.trim.endsWith("SNAPSHOT"))
-    Some("snapshots" at nexus + "content/repositories/snapshots")
-  else
-    Some("releases"  at nexus + "service/local/staging/deploy/maven2")
+  val host = "https://flow.jfrog.io/flow"
+  if (isSnapshot.value) {
+    Some("Artifactory Realm" at s"$host/libs-snapshot-local;build.timestamp=" + new java.util.Date().getTime)
+  } else {
+    Some("Artifactory Realm" at s"$host/libs-release-local")
+  }
 }
 
-credentials += Credentials(Path.userHome / ".credentials.sonatype")
+credentials += Credentials(
+  "Artifactory Realm",
+  "flow.jfrog.io",
+  System.getenv("ARTIFACTORY_USERNAME"),
+  System.getenv("ARTIFACTORY_PASSWORD")
+)
 
 publishArtifact in Test := false
 
@@ -89,7 +95,7 @@ pomExtra := (
       <url>http://www.pixzone.com</url>
     </developer>
   </developers>
-)
+  )
 
 // Josh Suereth's step-by-step guide to publishing on sonatype
 // http://www.scala-sbt.org/using_sonatype.html
