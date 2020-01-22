@@ -56,7 +56,7 @@ libraryDependencies := {
 
 libraryDependencies ++= Seq(
   "org.scalatest" %% "scalatest" % "3.1.0" % Test,
-  "org.mockito" % "mockito-core" % "3.2.4" % Test,
+  "org.mockito" %% "mockito-scala-scalatest" % "1.11.0",
   compilerPlugin("com.github.ghik" %% "silencer-plugin" % "1.4.4" cross CrossVersion.full),
   "com.github.ghik" %% "silencer-lib" % "1.4.4" % Provided cross CrossVersion.full,
 )
