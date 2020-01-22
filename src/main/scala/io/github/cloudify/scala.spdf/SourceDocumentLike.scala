@@ -1,8 +1,12 @@
 package io.github.cloudify.scala.spdf
 
-import java.io.{ByteArrayInputStream, InputStream, File}
+import java.io.{ByteArrayInputStream, File, InputStream}
+
 import scala.sys.process._
 import java.net.URL
+
+import com.github.ghik.silencer.silent
+
 import scala.annotation.implicitNotFound
 import scala.xml.Elem
 
@@ -17,12 +21,14 @@ trait SourceDocumentLike[-A] {
    * The source parameter to provide to `wkhtmltopdf`
    * Defaults to read from STDIN.
    */
+  @silent
   def commandParameter(sourceDocument: A): String = "-"
 
   /**
    * Source the input of the process from this sourceDocument
    * Defaults to passthrough.
    */
+  @silent
   def sourceFrom(sourceDocument: A)(process: ProcessBuilder): ProcessBuilder =
     process
 

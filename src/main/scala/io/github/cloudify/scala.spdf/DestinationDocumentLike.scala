@@ -1,6 +1,9 @@
 package io.github.cloudify.scala.spdf
 
-import java.io.{OutputStream, File}
+import java.io.{File, OutputStream}
+
+import com.github.ghik.silencer.silent
+
 import scala.sys.process._
 import scala.annotation.implicitNotFound
 
@@ -14,11 +17,13 @@ trait DestinationDocumentLike[-A] {
   /**
    * The destination argument to supply to `wkhtmltopdf`
    */
+  @silent
   def commandParameter(destinationDocument: A): String = "-"
 
   /**
    * Sink the process output into this document
    */
+  @silent
   def sinkTo(destinationDocument: A)(process: ProcessBuilder): ProcessBuilder =
     process
 
