@@ -1,10 +1,10 @@
-package io.github.cloudify.scala.spdf
+package io.flow.spdf
 
 import java.io.{ByteArrayInputStream, File}
 import java.net.URL
 
 import com.github.ghik.silencer.silent
-import io.github.cloudify.scala.spdf.SourceDocumentLike._
+import SourceDocumentLike._
 import org.mockito.MockitoSugar
 import org.scalatest.matchers.should.Matchers
 import org.scalatest.wordspec.AnyWordSpec

@@ -1,5 +1,5 @@
 
-name := "lib-pdf-generator"
+name := "sPDF"
 
 version := "0.0.1"
 

@@ -1,4 +1,4 @@
-package io.github.cloudify.scala.spdf
+package io.flow.spdf
 
 import org.scalatest.matchers.should.Matchers
 import org.scalatest.wordspec.AnyWordSpec

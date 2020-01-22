@@ -1,4 +1,4 @@
-package io.github.cloudify.scala.spdf
+package io.flow.spdf
 
 /**
  * Renders a parameter of type T to a sequence of strings that will be

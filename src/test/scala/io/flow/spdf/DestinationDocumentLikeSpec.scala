@@ -1,9 +1,9 @@
-package io.github.cloudify.scala.spdf
+package io.flow.spdf
 
 import java.io.{ByteArrayOutputStream, File, OutputStream}
 
 import com.github.ghik.silencer.silent
-import io.github.cloudify.scala.spdf.DestinationDocumentLike.{FileDestinationDocument, OutputStreamDestinationDocument}
+import DestinationDocumentLike.{FileDestinationDocument, OutputStreamDestinationDocument}
 import org.mockito.MockitoSugar
 import org.scalatest.matchers.should.Matchers
 import org.scalatest.wordspec.AnyWordSpec

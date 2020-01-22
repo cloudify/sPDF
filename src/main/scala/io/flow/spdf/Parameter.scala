@@ -1,4 +1,4 @@
-package io.github.cloudify.scala.spdf
+package io.flow.spdf
 
 /**
  * Describes a command line option

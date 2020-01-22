@@ -32,9 +32,7 @@ libraryDependencies += "io.github.cloudify" %% "spdf" % "1.3.1"
 ## Usage ##
 
 ```scala
-	import io.github.cloudify.scala.spdf._
-	import java.io._
-	import java.net._
+	
 
 	// Create a new Pdf converter with a custom configuration
 	// run `wkhtmltopdf --extended-help` for a full list of options
@@ -62,9 +60,7 @@ This is because wkhtmltopdf does not support running in headless mode on debian 
 in this kind of environment you need to use WrappedPdf instead of Pdf. For Example:
 
 ```scala
-	import io.github.cloudify.scala.spdf._
-	import java.io._
-	import java.net._
+	
 
 	// Create a new Pdf converter with a custom configuration
 	// run `wkhtmltopdf --extended-help` for a full list of options
