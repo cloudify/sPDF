@@ -1,5 +1,5 @@
-addSbtPlugin("org.xerial.sbt" % "sbt-sonatype" % "1.1")
 
-addSbtPlugin("com.jsuereth" % "sbt-pgp" % "1.0.0")
+resolvers += "Flow Plugins" at "https://flow.jfrog.io/flow/plugins-release/"
 
-addSbtPlugin("com.github.gseitz" % "sbt-release" % "1.0.3")
+addSbtPlugin("io.github.davidgregory084" % "sbt-tpolecat" % "0.1.10")
+addSbtPlugin("io.flow" % "sbt-flow-linter" % "0.0.11")
