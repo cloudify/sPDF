@@ -1,6 +1,8 @@
 
 name := "lib-pdf-generator"
 
+version := "0.0.1"
+
 description := "Create PDFs using plain old HTML+CSS. Uses wkhtmltopdf on the back-end which renders HTML using Webkit."
 
 homepage := Some(url("https://github.com/cloudify/sPDF"))
@@ -53,8 +55,8 @@ libraryDependencies := {
 }
 
 libraryDependencies ++= Seq(
-  "org.scalatest" %% "scalatest" % "3.1.0" % "test",
-  "org.mockito" % "mockito-scala-scalatest_2.13" % "1.11.0",
+  "org.scalatest" %% "scalatest" % "3.1.0" % Test,
+  "org.mockito" % "mockito-core" % "3.2.4" % Test,
   compilerPlugin("com.github.ghik" %% "silencer-plugin" % "1.4.4" cross CrossVersion.full),
   "com.github.ghik" %% "silencer-lib" % "1.4.4" % Provided cross CrossVersion.full,
 )
