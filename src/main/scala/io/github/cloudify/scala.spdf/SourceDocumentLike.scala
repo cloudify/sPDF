@@ -14,6 +14,7 @@ import scala.xml.Elem
  * Type class that describes the kind of source documents we can read the
  * input HTML from.
  */
+@silent("parameter") // suppressing 'parameter not used' warning in APIs
 @implicitNotFound(msg = "Cannot find SourceDocumentLike type class for ${A}")
 trait SourceDocumentLike[-A] {
 
@@ -21,14 +22,12 @@ trait SourceDocumentLike[-A] {
    * The source parameter to provide to `wkhtmltopdf`
    * Defaults to read from STDIN.
    */
-  @silent
   def commandParameter(sourceDocument: A): String = "-"
 
   /**
    * Source the input of the process from this sourceDocument
    * Defaults to passthrough.
    */
-  @silent
   def sourceFrom(sourceDocument: A)(process: ProcessBuilder): ProcessBuilder =
     process
 
