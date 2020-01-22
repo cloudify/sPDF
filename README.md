@@ -17,24 +17,16 @@ It's also possible to embed javascript code in the pages, `wkhtmltopdf` will wai
 
 ## Installation ##
 
-Add the following to your sbt build for Scala 2.10, 2.11 and 2.12:
+Add the following to your sbt build for Scala 2.10, 2.11, 2.12 and 2.13:
 
 ```scala
-libraryDependencies += "io.github.cloudify" %% "spdf" % "1.4.0"
-```
-
-Add the following to your sbt build for Scala 2.9:
-
-```scala
-libraryDependencies += "io.github.cloudify" %% "spdf" % "1.3.1"
+libraryDependencies += "io.flow" %% "spdf" % "1.4.0"
 ```
 
 ## Usage ##
 
 ```scala
-	import io.github.cloudify.scala.spdf._
-	import java.io._
-	import java.net._
+	import io.flow.spdf._
 
 	// Create a new Pdf converter with a custom configuration
 	// run `wkhtmltopdf --extended-help` for a full list of options
@@ -62,9 +54,7 @@ This is because wkhtmltopdf does not support running in headless mode on debian 
 in this kind of environment you need to use WrappedPdf instead of Pdf. For Example:
 
 ```scala
-	import io.github.cloudify.scala.spdf._
-	import java.io._
-	import java.net._
+	
 
 	// Create a new Pdf converter with a custom configuration
 	// run `wkhtmltopdf --extended-help` for a full list of options

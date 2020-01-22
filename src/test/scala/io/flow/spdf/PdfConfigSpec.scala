@@ -1,9 +1,9 @@
-package io.github.cloudify.scala.spdf
+package io.flow.spdf
 
-import org.scalatest.Matchers
-import org.scalatest.WordSpec
+import org.scalatest.matchers.should.Matchers
+import org.scalatest.wordspec.AnyWordSpec
 
-class PdfConfigSpec extends WordSpec with Matchers {
+class PdfConfigSpec extends AnyWordSpec with Matchers {
 
   "PdfConfig" should {
 

@@ -1,4 +1,4 @@
-package io.github.cloudify.scala.spdf
+package io.flow.spdf
 
 sealed trait PageOrientation {
   val value: String

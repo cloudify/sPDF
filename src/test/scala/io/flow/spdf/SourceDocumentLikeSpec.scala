@@ -1,14 +1,18 @@
-package io.github.cloudify.scala.spdf
+package io.flow.spdf
+
+import java.io.{ByteArrayInputStream, File}
+import java.net.URL
+
+import com.github.ghik.silencer.silent
+import SourceDocumentLike._
+import org.mockito.MockitoSugar
+import org.scalatest.matchers.should.Matchers
+import org.scalatest.wordspec.AnyWordSpec
 
 import scala.sys.process.Process
-import io.github.cloudify.scala.spdf.SourceDocumentLike._
-import java.io.{ File, ByteArrayInputStream }
-import java.net.URL
-import org.scalatest.WordSpec
-import org.scalatest.Matchers
-import org.scalatest.mockito.MockitoSugar
 
-class SourceDocumentLikeSpec extends WordSpec with Matchers with MockitoSugar {
+@silent("discarded non-Unit value")
+class SourceDocumentLikeSpec extends AnyWordSpec with Matchers with MockitoSugar {
 
   val catProcess = Process("cat")
 
@@ -43,11 +47,11 @@ class SourceDocumentLikeSpec extends WordSpec with Matchers with MockitoSugar {
   "SourceDocumentLike" should {
 
     "set commandParameter to -" in {
-      new SourceDocumentLike[Unit] {}.commandParameter(Unit) should equal("-")
+      new SourceDocumentLike[Unit] {}.commandParameter(()) should equal("-")
     }
 
     "leave process untouched" in {
-      new SourceDocumentLike[Unit] {}.sourceFrom(Unit)(catProcess) should equal(catProcess)
+      new SourceDocumentLike[Unit] {}.sourceFrom(())(catProcess) should equal(catProcess)
     }
 
   }

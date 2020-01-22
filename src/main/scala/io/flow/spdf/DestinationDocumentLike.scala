@@ -1,13 +1,17 @@
-package io.github.cloudify.scala.spdf
+package io.flow.spdf
 
-import java.io.{OutputStream, File}
-import scala.sys.process._
+import java.io.{File, OutputStream}
+
+import com.github.ghik.silencer.silent
+
 import scala.annotation.implicitNotFound
+import scala.sys.process._
 
 /**
  * Type class that describes the kind of destination type we can write the
  * resulting PDF documents to.
  */
+@silent("parameter") // suppressing 'parameter not used' warning in APIs
 @implicitNotFound(msg = "Cannot find DestinationDocumentLike type class for ${A}")
 trait DestinationDocumentLike[-A] {
 

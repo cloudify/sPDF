@@ -1,95 +1,45 @@
 
 name := "sPDF"
 
+version := "1.4.0"
+
 description := "Create PDFs using plain old HTML+CSS. Uses wkhtmltopdf on the back-end which renders HTML using Webkit."
-
-homepage := Some(url("https://github.com/cloudify/sPDF"))
-
-startYear := Some(2013)
 
 licenses := Seq(
   ("MIT", url("http://opensource.org/licenses/MIT"))
 )
 
-organization := "io.github.cloudify"
+organization := "io.flow"
 
-scalaVersion := "2.12.0"
+scalaVersion := "2.13.1"
 
-crossScalaVersions := Seq("2.10.6", "2.11.8", "2.12.0")
-
-releaseCrossBuild := true
-
-scalacOptions ++= Seq(
-  "-deprecation",
-  "-unchecked",
-  "-encoding", "UTF-8"
-)
+crossScalaVersions := Seq("2.11.12", "2.12.10", "2.13.1")
 
 fork in Test := true
 
-parallelExecution in Test := false
-
-logLevel in compile := Level.Warn
-
-scmInfo := Some(
-  ScmInfo(
-    url("https://github.com/cloudify/sPDF"),
-    "scm:git:https://github.com/cloudify/sPDF.git",
-    Some("scm:git:git@github.com:cloudify/sPDF.git")
-  )
+libraryDependencies ++= Seq(
+  "org.mockito" %% "mockito-scala-scalatest" % "1.11.0",
+  "org.scalatest" %% "scalatest" % "3.1.0" % Test,
+  "org.scala-lang.modules" %% "scala-xml" % "1.2.0",
+  "org.scala-lang.modules" %% "scala-parser-combinators" % "1.1.2",
+  compilerPlugin("com.github.ghik" %% "silencer-plugin" % "1.4.4" cross CrossVersion.full),
+  "com.github.ghik" %% "silencer-lib" % "1.4.4" % Provided cross CrossVersion.full,
 )
 
-// add dependencies on standard Scala modules, in a way
-// supporting cross-version publishing
-// taken from: http://github.com/scala/scala-module-dependency-sample
-libraryDependencies := {
-  CrossVersion.partialVersion(scalaVersion.value) match {
-    case Some((2, scalaMajor)) if scalaMajor >= 11 =>
-      libraryDependencies.value ++ Seq(
-        "org.scala-lang.modules" %% "scala-xml" % "1.0.6",
-        "org.scala-lang.modules" %% "scala-parser-combinators" % "1.0.4"
-      )
-    case _ =>
-      libraryDependencies.value
+resolvers += "Artifactory" at "https://flow.jfrog.io/flow/libs-release/"
+
+publishTo := {
+  val host = "https://flow.jfrog.io/flow"
+  if (isSnapshot.value) {
+    Some("Artifactory Realm" at s"$host/libs-snapshot-local;build.timestamp=" + new java.util.Date().getTime)
+  } else {
+    Some("Artifactory Realm" at s"$host/libs-release-local")
   }
 }
 
-libraryDependencies ++= Seq (
-  "org.scalatest"   %% "scalatest"      % "3.0.0"   % "test",
-  "org.mockito"     %  "mockito-all"    % "1.10.8"  % "test"
+credentials += Credentials(
+  "Artifactory Realm",
+  "flow.jfrog.io",
+  System.getenv("ARTIFACTORY_USERNAME"),
+  System.getenv("ARTIFACTORY_PASSWORD")
 )
-
-// publishing
-publishMavenStyle := true
-
-publishTo := {
-  val nexus = "https://oss.sonatype.org/"
-  if (version.value.trim.endsWith("SNAPSHOT"))
-    Some("snapshots" at nexus + "content/repositories/snapshots")
-  else
-    Some("releases"  at nexus + "service/local/staging/deploy/maven2")
-}
-
-credentials += Credentials(Path.userHome / ".credentials.sonatype")
-
-publishArtifact in Test := false
-
-// publishArtifact in (Compile, packageDoc) := false
-
-// publishArtifact in (Compile, packageSrc) := false
-
-pomIncludeRepository := { _ => false }
-
-pomExtra := (
-  <developers>
-    <developer>
-      <id>cloudify</id>
-      <name>Federico Feroldi</name>
-      <email>pix@yahoo.it</email>
-      <url>http://www.pixzone.com</url>
-    </developer>
-  </developers>
-)
-
-// Josh Suereth's step-by-step guide to publishing on sonatype
-// http://www.scala-sbt.org/using_sonatype.html

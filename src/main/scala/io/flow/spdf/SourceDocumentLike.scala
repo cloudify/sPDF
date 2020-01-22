@@ -1,8 +1,12 @@
-package io.github.cloudify.scala.spdf
+package io.flow.spdf
 
-import java.io.{ByteArrayInputStream, InputStream, File}
+import java.io.{ByteArrayInputStream, File, InputStream}
+
 import scala.sys.process._
 import java.net.URL
+
+import com.github.ghik.silencer.silent
+
 import scala.annotation.implicitNotFound
 import scala.xml.Elem
 
@@ -10,6 +14,7 @@ import scala.xml.Elem
  * Type class that describes the kind of source documents we can read the
  * input HTML from.
  */
+@silent("parameter") // suppressing 'parameter not used' warning in APIs
 @implicitNotFound(msg = "Cannot find SourceDocumentLike type class for ${A}")
 trait SourceDocumentLike[-A] {
 
