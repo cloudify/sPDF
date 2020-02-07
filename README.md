@@ -20,7 +20,7 @@ It's also possible to embed javascript code in the pages, `wkhtmltopdf` will wai
 Add the following to your sbt build for Scala 2.10, 2.11, 2.12 and 2.13:
 
 ```scala
-libraryDependencies += "io.flow" %% "spdf" % "1.4.0"
+libraryDependencies += "io.flow" %% "spdf" % "1.4.1"
 ```
 
 ## Usage ##
