@@ -17,7 +17,7 @@ crossScalaVersions := Seq("2.11.12", "2.12.10", "2.13.1")
 fork in Test := true
 
 libraryDependencies ++= Seq(
-  "org.mockito" %% "mockito-scala-scalatest" % "1.11.0",
+  "org.mockito" %% "mockito-scala-scalatest" % "1.11.0" % Test,
   "org.scalatest" %% "scalatest" % "3.1.0" % Test,
   "org.scala-lang.modules" %% "scala-xml" % "1.2.0",
   "org.scala-lang.modules" %% "scala-parser-combinators" % "1.1.2",
