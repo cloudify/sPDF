@@ -17,8 +17,8 @@ crossScalaVersions := Seq("2.12.10", "2.13.1")
 fork in Test := true
 
 libraryDependencies ++= Seq(
-  "org.mockito" %% "mockito-scala-scalatest" % "1.13.9" % Test,
-  "org.scalatest" %% "scalatest" % "3.1.0" % Test,
+  "org.mockito" %% "mockito-scala-scalatest" % "1.14.8" % Test,
+  "org.scalatest" %% "scalatest" % "3.2.0" % Test,
   "org.scala-lang.modules" %% "scala-xml" % "1.3.0",
   "org.scala-lang.modules" %% "scala-parser-combinators" % "1.1.2",
   compilerPlugin("com.github.ghik" %% "silencer-plugin" % "1.6.0" cross CrossVersion.full),
