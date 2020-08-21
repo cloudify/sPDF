@@ -18,7 +18,7 @@ fork in Test := true
 
 libraryDependencies ++= Seq(
   "org.mockito" %% "mockito-scala-scalatest" % "1.14.8" % Test,
-  "org.scalatest" %% "scalatest" % "3.2.0" % Test,
+  "org.scalatest" %% "scalatest" % "3.2.1" % Test,
   "org.scala-lang.modules" %% "scala-xml" % "1.3.0",
   "org.scala-lang.modules" %% "scala-parser-combinators" % "1.1.2",
   compilerPlugin("com.github.ghik" %% "silencer-plugin" % "1.6.0" cross CrossVersion.full),
