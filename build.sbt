@@ -1,6 +1,6 @@
 name := "sPDF"
 
-version := "1.4.5"
+version := "1.4.6"
 
 description := "Create PDFs using plain old HTML+CSS. Uses wkhtmltopdf on the back-end which renders HTML using Webkit."
 
