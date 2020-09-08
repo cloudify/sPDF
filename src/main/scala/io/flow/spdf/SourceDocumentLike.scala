@@ -5,16 +5,13 @@ import java.io.{ByteArrayInputStream, File, InputStream}
 import scala.sys.process._
 import java.net.URL
 
-import com.github.ghik.silencer.silent
-
-import scala.annotation.implicitNotFound
+import scala.annotation.{implicitNotFound, nowarn}
 import scala.xml.Elem
 
 /**
  * Type class that describes the kind of source documents we can read the
  * input HTML from.
  */
-@silent("parameter") // suppressing 'parameter not used' warning in APIs
 @implicitNotFound(msg = "Cannot find SourceDocumentLike type class for ${A}")
 trait SourceDocumentLike[-A] {
 
@@ -22,13 +19,13 @@ trait SourceDocumentLike[-A] {
    * The source parameter to provide to `wkhtmltopdf`
    * Defaults to read from STDIN.
    */
-  def commandParameter(sourceDocument: A): String = "-"
+  def commandParameter(@nowarn sourceDocument: A): String = "-"
 
   /**
    * Source the input of the process from this sourceDocument
    * Defaults to passthrough.
    */
-  def sourceFrom(sourceDocument: A)(process: ProcessBuilder): ProcessBuilder =
+  def sourceFrom(@nowarn sourceDocument: A)(process: ProcessBuilder): ProcessBuilder =
     process
 
 }

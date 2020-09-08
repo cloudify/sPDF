@@ -2,7 +2,6 @@ package io.flow.spdf
 
 import java.io.{ByteArrayOutputStream, File, OutputStream}
 
-import com.github.ghik.silencer.silent
 import DestinationDocumentLike.{FileDestinationDocument, OutputStreamDestinationDocument}
 import org.mockito.MockitoSugar
 import org.scalatest.matchers.should.Matchers
@@ -10,7 +9,6 @@ import org.scalatest.wordspec.AnyWordSpec
 
 import scala.sys.process._
 
-@silent("discarded non-Unit value")
 class DestinationDocumentLikeSpec extends AnyWordSpec with Matchers with MockitoSugar {
 
   trait catProcess {

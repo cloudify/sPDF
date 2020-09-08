@@ -3,7 +3,6 @@ package io.flow.spdf
 import java.io.{ByteArrayInputStream, File}
 import java.net.URL
 
-import com.github.ghik.silencer.silent
 import SourceDocumentLike._
 import org.mockito.MockitoSugar
 import org.scalatest.matchers.should.Matchers
@@ -11,7 +10,6 @@ import org.scalatest.wordspec.AnyWordSpec
 
 import scala.sys.process.Process
 
-@silent("discarded non-Unit value")
 class SourceDocumentLikeSpec extends AnyWordSpec with Matchers with MockitoSugar {
 
   val catProcess = Process("cat")
