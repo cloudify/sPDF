@@ -28,7 +28,7 @@ libraryDependencies ++= (scalaBinaryVersion.value match {
   case "2.12" => Seq(
     compilerPlugin("com.github.ghik" % "silencer-plugin" % "1.6.0" cross CrossVersion.full),
     "com.github.ghik" % "silencer-lib" % "1.6.0" % Provided cross CrossVersion.full,
-    "org.scala-lang.modules" %% "scala-collection-compat" % "2.3.2",
+    "org.scala-lang.modules" %% "scala-collection-compat" % "2.4.0",
   )
   case _ => Seq()
 })
