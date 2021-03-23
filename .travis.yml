@@ -13,7 +13,7 @@ cache:
     - $HOME/.cache/coursier
 branches:
   only:
-    - master
+    - main
 before_cache:
   - rm -fv $HOME/.ivy2/.sbt.ivy.lock
   - find $HOME/.ivy2/cache -name "ivydata-*.properties" -print -delete
