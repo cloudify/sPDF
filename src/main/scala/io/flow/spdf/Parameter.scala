@@ -45,7 +45,7 @@ object Parameter {
   /**
    * Creates a new CommandOption with the specified name and default value
    */
-  def apply[T : ParamShow](commandName: String, defaultValue: T): Parameter[T] =
+  def apply[T](commandName: String, defaultValue: T): Parameter[T] =
     new Parameter[T] {
       override val name: String = commandName
       override val default: Option[T] = Some(defaultValue)
@@ -54,7 +54,7 @@ object Parameter {
   /**
    * Creates a new CommandOption with the specified name
    */
-  def apply[T : ParamShow](commandName: String): Parameter[T] =
+  def apply[T](commandName: String): Parameter[T] =
     new Parameter[T] {
       override val name: String = commandName
       override val default: Option[T] = None

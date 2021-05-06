@@ -13,3 +13,4 @@ target/
 /.idea_modules
 /bin/
 /.DS_Store
+.bsp/
