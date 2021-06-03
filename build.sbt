@@ -25,9 +25,9 @@ Test / fork := true
 
 libraryDependencies ++= Seq(
   "org.mockito" %% "mockito-scala-scalatest" % "1.16.37" % Test,
-  "org.scalatest" %% "scalatest" % "3.2.8" % Test,
-  "org.scala-lang.modules" %% "scala-xml" % "1.3.0",
-  "org.scala-lang.modules" %% "scala-parser-combinators" % "1.1.2",
+  "org.scalatest" %% "scalatest" % "3.2.9" % Test,
+  "org.scala-lang.modules" %% "scala-xml" % "2.0.0",
+  "org.scala-lang.modules" %% "scala-parser-combinators" % "2.0.0",
 )
 
 resolvers += "Artifactory" at "https://flow.jfrog.io/flow/libs-release/"
