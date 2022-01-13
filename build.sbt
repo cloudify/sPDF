@@ -49,4 +49,4 @@ credentials += Credentials(
 )
 
 scalacOptions ++= allScalacOptions
-version := "1.4.15"
+version := "1.4.16"
