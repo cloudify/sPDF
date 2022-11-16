@@ -19,7 +19,7 @@ trait SourceDocumentLike[-A] {
    * The source parameter to provide to `wkhtmltopdf`
    * Defaults to read from STDIN.
    */
-  def commandParameter(@nowarn sourceDocument: A): String = "-"
+  def commandParameter(sourceDocument: A): String = "-"
 
   /**
    * Source the input of the process from this sourceDocument

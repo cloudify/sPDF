@@ -30,7 +30,7 @@ object ParamShow {
 
   implicit object OptionBooleanParamShow extends ParamShow[Option[Boolean]] {
     override def show(name: String, valueOpt: Option[Boolean]): Iterable[String] =
-      valueOpt.toIterable.flatMap { formatParam(name, _) }
+      valueOpt.toSeq.flatMap { formatParam(name, _) }
   }
 
   implicit object IntParamShow extends ParamShow[Int] {
