@@ -15,7 +15,7 @@ trait DestinationDocumentLike[-A] {
   /**
    * The destination argument to supply to `wkhtmltopdf`
    */
-  def commandParameter(@nowarn destinationDocument: A): String = "-"
+  def commandParameter(destinationDocument: A): String = "-"
 
   /**
    * Sink the process output into this document
