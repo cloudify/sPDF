@@ -1,6 +1,6 @@
-package io.github.cloudify.scala.spdf
+package io.github.simplifier_ag.scala.spdf
 
-import io.github.cloudify.scala.spdf.ParamShow.{BooleanParamShow, StringParamShow, IterableParamShow}
+import ParamShow.{BooleanParamShow, StringParamShow, IterableParamShow}
 import org.scalatest.WordSpec
 import org.scalatest.Matchers
 

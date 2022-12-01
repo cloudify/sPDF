@@ -1,4 +1,4 @@
-package io.github.cloudify.scala.spdf
+package io.github.simplifier_ag.scala.spdf
 
 /**
  * Describes a command line option
@@ -36,7 +36,7 @@ trait Parameter[T] {
   /**
    * Provides the current value for the option
    */
-  private def value: Option[T] = underlying orElse default
+  protected def value: Option[T] = underlying orElse default
 
 }
 

@@ -1,7 +1,7 @@
-package io.github.cloudify.scala.spdf
+package io.github.simplifier_ag.scala.spdf
 
 import scala.sys.process.Process
-import io.github.cloudify.scala.spdf.SourceDocumentLike._
+import SourceDocumentLike._
 import java.io.{ File, ByteArrayInputStream }
 import java.net.URL
 import org.scalatest.WordSpec

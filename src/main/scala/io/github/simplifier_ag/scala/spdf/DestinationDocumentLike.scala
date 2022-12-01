@@ -1,4 +1,4 @@
-package io.github.cloudify.scala.spdf
+package io.github.simplifier_ag.scala.spdf
 
 import java.io.{OutputStream, File}
 import scala.sys.process._

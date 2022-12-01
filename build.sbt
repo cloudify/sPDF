@@ -3,7 +3,7 @@ name := "sPDF"
 
 description := "Create PDFs using plain old HTML+CSS. Uses wkhtmltopdf on the back-end which renders HTML using Webkit."
 
-homepage := Some(url("https://github.com/cloudify/sPDF"))
+homepage := Some(url("https://github.com/simplifier-ag/sPDF"))
 
 startYear := Some(2013)
 
@@ -11,7 +11,7 @@ licenses := Seq(
   ("MIT", url("http://opensource.org/licenses/MIT"))
 )
 
-organization := "io.github.cloudify"
+organization := "io.github.simplifier-ag"
 
 scalaVersion := "2.12.0"
 
@@ -33,9 +33,9 @@ logLevel in compile := Level.Warn
 
 scmInfo := Some(
   ScmInfo(
-    url("https://github.com/cloudify/sPDF"),
-    "scm:git:https://github.com/cloudify/sPDF.git",
-    Some("scm:git:git@github.com:cloudify/sPDF.git")
+    url("https://github.com/simplifier-ag/sPDF"),
+    "scm:git:https://github.com/simplifier-ag/sPDF.git",
+    Some("scm:git:git@github.com:simplifier-ag/sPDF.git")
   )
 )
 

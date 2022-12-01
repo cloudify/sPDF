@@ -1,4 +1,4 @@
-package io.github.cloudify.scala.spdf
+package io.github.simplifier_ag.scala.spdf
 
 import scala.sys.process._
 import java.io.File
@@ -23,10 +23,9 @@ class Pdf(executablePath: String, config: PdfConfig) {
    * Generates the command line needed to execute `wkhtmltopdf`
    */
   private def toCommandLine[A: SourceDocumentLike, B: DestinationDocumentLike](source: A, destination: B): Seq[String] =
-    Seq(executablePath) ++
+    Seq(executablePath, "--quiet") ++
       PdfConfig.toParameters(config) ++
       Seq(
-        "--quiet",
         implicitly[SourceDocumentLike[A]].commandParameter(source),
         implicitly[DestinationDocumentLike[B]].commandParameter(destination)
       )
@@ -37,7 +36,7 @@ class Pdf(executablePath: String, config: PdfConfig) {
    */
   private def validateExecutable_!(executablePath: String): Unit = {
     val executableFile = new File(executablePath)
-    if(!executableFile.canExecute) throw new NoExecutableException(executableFile.getAbsolutePath)
+    if(!executableFile.canExecute) throw NoExecutableException(executableFile.getAbsolutePath)
   }
 
 }
@@ -50,7 +49,7 @@ object Pdf {
    */
   def apply(config: PdfConfig): Pdf = {
     val executablePath: String = PdfConfig.findExecutable.getOrElse {
-      throw new NoExecutableException(System.getenv("PATH"))
+      throw NoExecutableException(System.getenv("PATH"))
     }
 
     apply(executablePath, config)

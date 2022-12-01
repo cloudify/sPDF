@@ -1,4 +1,4 @@
-package io.github.cloudify.scala.spdf
+package io.github.simplifier_ag.scala.spdf
 
 import java.io.{ByteArrayInputStream, InputStream, File}
 import scala.sys.process._
@@ -70,7 +70,7 @@ object SourceDocumentLike {
 
     override def commandParameter(sourceDocument: URL) = sourceDocument.getProtocol match {
       case "https" | "http" | "file" => sourceDocument.toString
-      case _ => throw new UnsupportedProtocolException(sourceDocument)
+      case _ => throw UnsupportedProtocolException(sourceDocument)
     }
 
   }

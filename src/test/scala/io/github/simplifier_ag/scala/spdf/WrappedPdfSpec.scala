@@ -1,27 +1,13 @@
-package io.github.cloudify.scala.spdf
+package io.github.simplifier_ag.scala.spdf
 
 import java.io.File
 import scala.sys.process._
 import org.scalatest.Matchers
 import org.scalatest.WordSpec
 
-class PdfSpec extends WordSpec with Matchers {
+class WrappedPdfSpec extends WordSpec with Matchers {
 
   "A Pdf" should {
-
-    "require the executionPath config" in {
-      val file = new File("notexecutable")
-      val filePath = file.getAbsolutePath
-
-      assertThrows[NoExecutableException] {
-        new Pdf(filePath, PdfConfig.default)
-      }
-
-      assertThrows[NoExecutableException] {
-        Pdf(filePath, PdfConfig.default)
-      }
-
-    }
 
     PdfConfig.findExecutable match {
       case Some(_) =>
@@ -34,7 +20,7 @@ class PdfSpec extends WordSpec with Matchers {
 
           val file = File.createTempFile("scala.spdf", "pdf")
 
-          val pdf = Pdf(PdfConfig.default)
+          val pdf = WrappedPdf(Seq("wkhtmltopdf"), PdfConfig.default)
 
           pdf.run(page, file)
 

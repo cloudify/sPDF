@@ -1,7 +1,7 @@
-package io.github.cloudify.scala.spdf
+package io.github.simplifier_ag.scala.spdf
 
 import java.io.{OutputStream, ByteArrayOutputStream, File}
-import io.github.cloudify.scala.spdf.DestinationDocumentLike.{OutputStreamDestinationDocument, FileDestinationDocument}
+import DestinationDocumentLike.{OutputStreamDestinationDocument, FileDestinationDocument}
 import scala.sys.process._
 import org.scalatest.WordSpec
 import org.scalatest.mockito.MockitoSugar
