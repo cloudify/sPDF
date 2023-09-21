@@ -1,10 +1,7 @@
 pipeline {
   agent {
     kubernetes {
-      inheritFrom 'default'
-      containerTemplates([
-        containerTemplate(name: 'dd', image: 'flowcommerce/dependence-day:0.0.24', command: 'cat', ttyEnabled: true),
-      ])
+      inheritFrom 'default-dependence-day'
     }
   }
   
