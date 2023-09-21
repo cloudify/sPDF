@@ -29,7 +29,7 @@ pipeline {
     stage('Release') {
       when { branch 'main' }
       steps {
-        container('dd') {
+        container('dependence-day') {
           withCredentials([
             usernamePassword(
               credentialsId: 'jenkins-x-jfrog',
