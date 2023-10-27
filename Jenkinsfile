@@ -1,7 +1,10 @@
 pipeline {
   agent {
     kubernetes {
-      inheritFrom 'default-dependence-day'
+      inheritFrom 'default'
+      containerTemplates([
+      containerTemplate(name: 'play', image: 'flowdocker/play_builder:latest-java17-jammy', command: 'cat', ttyEnabled: true),
+      ])
     }
   }
   
@@ -26,10 +29,26 @@ pipeline {
       }
     }
 
+    stage('SBT Test') {
+      steps {
+        container('play') {
+          script {
+            try {
+              sh '''
+                sbt clean test:compile test
+              '''
+            } finally {
+                junit allowEmptyResults: true, testResults: '**/target/test-reports/*.xml'
+            }
+          }
+        }
+      }
+    }
+
     stage('Release') {
       when { branch 'main' }
       steps {
-        container('dependence-day') {
+        container('play') {
           withCredentials([
             usernamePassword(
               credentialsId: 'jenkins-x-jfrog',
