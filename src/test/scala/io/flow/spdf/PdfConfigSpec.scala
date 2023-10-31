@@ -19,7 +19,21 @@ class PdfConfigSpec extends AnyWordSpec with Matchers {
         orientation := Landscape
         zoom := 1.23f
       }
-      PdfConfig.toParameters(config) should equal(Seq("--enable-forms", "--encoding", "UTF-8", "--margin-bottom", "1in", "--minimum-font-size", "3", "--orientation", "Landscape", "--zoom", "%.2f".format(1.23f)))
+      PdfConfig.toParameters(config) should equal(
+        Seq(
+          "--enable-forms",
+          "--encoding",
+          "UTF-8",
+          "--margin-bottom",
+          "1in",
+          "--minimum-font-size",
+          "3",
+          "--orientation",
+          "Landscape",
+          "--zoom",
+          "%.2f".format(1.23f)
+        )
+      )
     }
 
     "no pdf compression" in {
@@ -34,7 +48,9 @@ class PdfConfigSpec extends AnyWordSpec with Matchers {
       val config = new PdfConfig {
         allow := List("/some/path", "/some/other/path")
       }
-      PdfConfig.toParameters(config) should equal(Seq("--allow", "/some/path", "--allow", "/some/other/path", "--encoding", "UTF-8"))
+      PdfConfig.toParameters(config) should equal(
+        Seq("--allow", "/some/path", "--allow", "/some/other/path", "--encoding", "UTF-8")
+      )
     }
 
     "print media type" in {

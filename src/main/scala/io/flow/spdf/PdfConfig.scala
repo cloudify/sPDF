@@ -3,15 +3,12 @@ package io.flow.spdf
 import scala.sys.process._
 import ParamShow._
 
-/**
- * Holds the configuration parameters of Pdf Kit
- */
+/** Holds the configuration parameters of Pdf Kit
+  */
 trait PdfConfig {
 
-  /**
-   * Options for `wkhtmltopdf` command
-   * See `wkhtmltopdf --extended-help` for a description of each option
-   */
+  /** Options for `wkhtmltopdf` command See `wkhtmltopdf --extended-help` for a description of each option
+    */
 
   val allow = Parameter[Iterable[String]]("allow")
 
@@ -163,14 +160,12 @@ trait PdfConfig {
 
 object PdfConfig {
 
-  /**
-   * An instance of the default configuration
-   */
+  /** An instance of the default configuration
+    */
   object default extends PdfConfig
 
-  /**
-   * Generates a sequence of command line parameters from a `PdfKitConfig`
-   */
+  /** Generates a sequence of command line parameters from a `PdfKitConfig`
+    */
   def toParameters(config: PdfConfig): Seq[String] = {
     import config._
     Seq(
@@ -249,13 +244,12 @@ object PdfConfig {
     ).flatten
   }
 
-  /**
-   * Attempts to find the `wkhtmltopdf` executable in the system path.
-   * @return
-   */
+  /** Attempts to find the `wkhtmltopdf` executable in the system path.
+    * @return
+    */
   def findExecutable: Option[String] = try {
     val os = System.getProperty("os.name").toLowerCase
-    val cmd = if(os.contains("windows")) "where wkhtmltopdf" else "which wkhtmltopdf"
+    val cmd = if (os.contains("windows")) "where wkhtmltopdf" else "which wkhtmltopdf"
 
     Option(cmd.!!.trim).filter(_.nonEmpty)
   } catch {

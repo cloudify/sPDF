@@ -1,9 +1,7 @@
 package io.flow.spdf
 
-/**
- * Renders a parameter of type T to a sequence of strings that will be
- * appended to the command line.
- */
+/** Renders a parameter of type T to a sequence of strings that will be appended to the command line.
+  */
 trait ParamShow[T] {
   def show(name: String, value: T): Iterable[String]
 }
@@ -51,7 +49,7 @@ object ParamShow {
   private def formatParam(name: String, value: Option[String]): Iterable[String] =
     Seq(Some("--" + name), value).flatten
 
-  private def formatParam(name: String, value: Boolean): Iterable[String] = if(value) {
+  private def formatParam(name: String, value: Boolean): Iterable[String] = if (value) {
     Some("--" + name)
   } else {
     Some("--no-" + name)

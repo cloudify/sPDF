@@ -4,7 +4,10 @@ import scala.sys.process.Process
 
 class WrappedPdf(executable: Seq[String], config: PdfConfig) {
 
-  def run[A, B](sourceDocument: A, destinationDocument: B)(implicit sourceDocumentLike: SourceDocumentLike[A], destinationDocumentLike: DestinationDocumentLike[B]): Int = {
+  def run[A, B](sourceDocument: A, destinationDocument: B)(implicit
+    sourceDocumentLike: SourceDocumentLike[A],
+    destinationDocumentLike: DestinationDocumentLike[B]
+  ): Int = {
     val commandLine = toCommandLine(sourceDocument, destinationDocument)
     val process = Process(commandLine)
 

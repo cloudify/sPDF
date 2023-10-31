@@ -8,23 +8,17 @@ import java.net.URL
 import scala.annotation.{implicitNotFound, nowarn}
 import scala.xml.Elem
 
-/**
- * Type class that describes the kind of source documents we can read the
- * input HTML from.
- */
+/** Type class that describes the kind of source documents we can read the input HTML from.
+  */
 @implicitNotFound(msg = "Cannot find SourceDocumentLike type class for ${A}")
 trait SourceDocumentLike[-A] {
 
-  /**
-   * The source parameter to provide to `wkhtmltopdf`
-   * Defaults to read from STDIN.
-   */
+  /** The source parameter to provide to `wkhtmltopdf` Defaults to read from STDIN.
+    */
   def commandParameter(sourceDocument: A): String = "-"
 
-  /**
-   * Source the input of the process from this sourceDocument
-   * Defaults to passthrough.
-   */
+  /** Source the input of the process from this sourceDocument Defaults to passthrough.
+    */
   def sourceFrom(@nowarn sourceDocument: A)(process: ProcessBuilder): ProcessBuilder =
     process
 
@@ -32,9 +26,8 @@ trait SourceDocumentLike[-A] {
 
 object SourceDocumentLike {
 
-  /**
-   * Pipes the InputStream into the process STDIN
-   */
+  /** Pipes the InputStream into the process STDIN
+    */
   implicit object InputStreamSourceDocument extends SourceDocumentLike[InputStream] {
 
     override def sourceFrom(sourceDocument: InputStream)(process: ProcessBuilder): ProcessBuilder =
@@ -42,9 +35,8 @@ object SourceDocumentLike {
 
   }
 
-  /**
-   * Sets the file absolute path as the input parameter
-   */
+  /** Sets the file absolute path as the input parameter
+    */
   implicit object FileSourceDocument extends SourceDocumentLike[File] {
 
     override def commandParameter(sourceDocument: File): String =
@@ -52,9 +44,8 @@ object SourceDocumentLike {
 
   }
 
-  /**
-   * Pipes a UTF-8 string into the process STDIN
-   */
+  /** Pipes a UTF-8 string into the process STDIN
+    */
   implicit object StringSourceDocument extends SourceDocumentLike[String] {
 
     override def sourceFrom(sourceDocument: String)(process: ProcessBuilder) =
@@ -65,9 +56,8 @@ object SourceDocumentLike {
 
   }
 
-  /**
-   * Sets the URL as the input parameter
-   */
+  /** Sets the URL as the input parameter
+    */
   implicit object URLSourceDocument extends SourceDocumentLike[URL] {
 
     override def commandParameter(sourceDocument: URL) = sourceDocument.getProtocol match {
@@ -77,9 +67,8 @@ object SourceDocumentLike {
 
   }
 
-  /**
-   * Sets the XML node as the input parameter
-   */
+  /** Sets the XML node as the input parameter
+    */
   implicit object XmlSourceDocument extends SourceDocumentLike[Elem] {
 
     override def sourceFrom(sourceDocument: Elem)(process: ProcessBuilder) =

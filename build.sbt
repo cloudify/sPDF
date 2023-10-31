@@ -52,3 +52,4 @@ credentials += Credentials(
 )
 
 scalacOptions ++= allScalacOptions
+scalafmtOnCompile := true

@@ -47,7 +47,6 @@ class PdfSpec extends AnyWordSpec with Matchers {
         "Skipping test, missing wkhtmltopdf binary" in { true should equal(true) }
     }
 
-
   }
 
 }
